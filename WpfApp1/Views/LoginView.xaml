@@ -52,7 +52,7 @@
                  Style="{StaticResource MaterialDesignOutlinedTextBox}"
                  KeyboardNavigation.TabIndex="1"
                  ToolTip="Unesite vašu email adresu"
-                 />
+                 Foreground="{DynamicResource MaterialDesignBody}"/>
 
         <PasswordBox x:Name="PasswordBox" Grid.Row="2"
                      materialDesign:HintAssist.Hint="{DynamicResource Password}"
@@ -60,7 +60,7 @@
                      Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
                      KeyboardNavigation.TabIndex="2"
                      ToolTip="Unesite vašu lozinku"
-                     />
+                     Foreground="{DynamicResource MaterialDesignBody}"/>
 
         <Button Content="{DynamicResource Login}" Grid.Row="3" Height="40" Width="120" Margin="0,20,0,0"
                 Style="{StaticResource MaterialDesignRaisedButton}"

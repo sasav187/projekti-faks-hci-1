@@ -11,7 +11,8 @@
 
     <DockPanel>
         
-        <ComboBox x:Name="ThemeComboBox" Width="150" Margin="10" SelectionChanged="ThemeComboBox_SelectionChanged">
+        <ComboBox x:Name="ThemeComboBox" Width="150" Margin="10" SelectionChanged="ThemeComboBox_SelectionChanged"
+                  Foreground="{DynamicResource MaterialDesignBody}">
             <ComboBoxItem Content="{DynamicResource ThemeFirst}" Tag="LightPurpleLime" IsSelected="True"/>
             <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkBlueAmber" />
             <ComboBoxItem Content="{DynamicResource ThemeThird}" Tag="LightGreenPink" />
@@ -21,13 +22,15 @@
             <ComboBoxItem Tag="sr" IsSelected="True">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Flags/sr.png" Width="20" Height="15" Margin="0,0,5,0"/>
-                    <TextBlock Text="Srpski"/>
+                    <TextBlock Text="Srpski"
+                               Foreground="{DynamicResource MaterialDesignBody}"/>
                 </StackPanel>
             </ComboBoxItem>
             <ComboBoxItem Tag="en">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Flags/en.png" Width="20" Height="15" Margin="0,0,5,0"/>
-                    <TextBlock Text="English"/>
+                    <TextBlock Text="English"
+                               Foreground="{DynamicResource MaterialDesignBody}"/>
                 </StackPanel>
             </ComboBoxItem>
         </ComboBox>
