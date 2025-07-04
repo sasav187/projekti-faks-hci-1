@@ -1,0 +1,80 @@
+<Window x:Class="ProdavnicaApp.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="{DynamicResource TitleLogin}" Height="350" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Foreground="{DynamicResource MaterialDesignBodyLight}">
+
+    <Grid Margin="30" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ComboBox x:Name="ThemeComboBox" Width="150" Margin="220,-29,-30,0" SelectionChanged="ThemeComboBox_SelectionChanged" 
+                  VerticalAlignment="Top"
+                  Foreground="{DynamicResource MaterialDesignBody}">
+            <ComboBoxItem Content="{DynamicResource ThemeFirst}" Tag="LightPurpleLime" IsSelected="True"/>
+            <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkBlueAmber" />
+            <ComboBoxItem Content="{DynamicResource ThemeThird}" Tag="LightGreenPink" />
+        </ComboBox>
+
+        <ComboBox Width="150" SelectionChanged="Language_SelectionChanged" Margin="-29,-25,219,0" VerticalAlignment="Top">
+            <ComboBoxItem Tag="sr" IsSelected="True">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Flags/sr.png" Width="20" Height="15" Margin="0,0,5,0"/>
+                    <TextBlock Text="Srpski"
+                               Foreground="{DynamicResource MaterialDesignBody}"/>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem Tag="en">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Flags/en.png" Width="20" Height="15" Margin="0,0,5,0"/>
+                    <TextBlock Text="English"
+                               Foreground="{DynamicResource MaterialDesignBody}"/>
+                </StackPanel>
+            </ComboBoxItem>
+        </ComboBox>
+
+        <TextBlock Text="{DynamicResource WelcomeLogin}" 
+                   FontSize="20" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center" Grid.Row="0"
+                   Foreground="{DynamicResource MaterialDesignBody}"/>
+
+        <TextBox x:Name="EmailTextBox" Grid.Row="1"
+                 materialDesign:HintAssist.Hint="{DynamicResource Email}"
+                 Margin="0,5"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 KeyboardNavigation.TabIndex="1"
+                 ToolTip="Unesite vašu email adresu"
+                 />
+
+        <PasswordBox x:Name="PasswordBox" Grid.Row="2"
+                     materialDesign:HintAssist.Hint="{DynamicResource Password}"
+                     Margin="0,15,0,5"
+                     Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                     KeyboardNavigation.TabIndex="2"
+                     ToolTip="Unesite vašu lozinku"
+                     />
+
+        <Button Content="{DynamicResource Login}" Grid.Row="3" Height="40" Width="120" Margin="0,20,0,0"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                Click="Login_Click"
+                KeyboardNavigation.TabIndex="3"
+                HorizontalAlignment="Right"
+                />
+
+        <TextBlock Grid.Row="4" Margin="0,25,0,0" HorizontalAlignment="Center" Foreground="{DynamicResource MaterialDesignBodySecondary}"
+                   FontSize="12" TextWrapping="Wrap">
+			Nemate nalog?
+			<!--<Hyperlink NavigateUri="#" RequestNavigate="Hyperlink_RequestNavigate">
+				Registrujte se ovde
+			</Hyperlink>-->
+        </TextBlock>
+    </Grid>
+</Window>
