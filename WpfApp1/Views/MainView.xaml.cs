@@ -14,7 +14,7 @@ namespace ProdavnicaApp
         {
             InitializeComponent();
             _korisnik = korisnik;
-            UserInfo.Text = $"Prijavljeni korisnik: {_korisnik.Ime} {_korisnik.Prezime} ({_korisnik.Uloga?.Naziv})";
+            UserInfo.Text = $"Prijavljeni korisnik: {_korisnik.Ime} {_korisnik.Prezime}";
             LoadKategorije();
         }
 
