@@ -35,7 +35,7 @@
             </ComboBoxItem>
         </ComboBox>
 
-        <ToolBar Background="#673AB7" Foreground="White" Height="40" DockPanel.Dock="Top">
+        <ToolBar Height="40" DockPanel.Dock="Top">
             <TextBlock Text="{DynamicResource Welcome}" FontSize="16" Margin="10,0" />
         </ToolBar>
 
@@ -69,11 +69,13 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
 
-                <Button Content="Izlaz" Width="100" Height="40" Click="Exit_Click"
+                <Button Content="{DynamicResource Logout}"
+                        Width="100"
+                        Height="40"
+                        Margin="10"
+                        Click="Logout_Click"
                         Style="{StaticResource MaterialDesignFlatButton}" />
 
-                <Button Content="Odjava" Width="100" Height="40" Click="Exit_Click"
-                        Style="{StaticResource MaterialDesignFlatButton}" />
             </StackPanel>
         </ScrollViewer>
     </DockPanel>

@@ -1,6 +1,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
 	<sys:String x:Key="TitleMain">Glavni Meni</sys:String>
 	<sys:String x:Key="TitleLogin">Prijava</sys:String>
 	<sys:String x:Key="TitleAdmin">Admin Meni</sys:String>
@@ -15,8 +16,21 @@
 	<sys:String x:Key="AddProduct">Dodaj proizvod</sys:String>
 	<sys:String x:Key="AddCategory">Dodaj kategoriju</sys:String>
 	<sys:String x:Key="UsersTitle">Pregled korisničkih naloga</sys:String>
+    <sys:String x:Key="Logout">Odjavi se</sys:String>
+    <sys:String x:Key="EmailTip">Unesite Vašu email adresu</sys:String>
+    <sys:String x:Key="PasswordTip">Unesite Vašu lozinku</sys:String>
 
-	<sys:String x:Key="ProductName">Naziv proizvoda</sys:String>
+    <sys:String x:Key="NoAccount">Nemate nalog?</sys:String>
+    <sys:String x:Key="RegisterHere">Registrujte se ovdje</sys:String>
+
+    <sys:String x:Key="TitleRegister">Registracija</sys:String>
+    <sys:String x:Key="RegisterTitle">Registrujte se</sys:String>
+    <sys:String x:Key="FirstName">Ime</sys:String>
+    <sys:String x:Key="LastName">Prezime</sys:String>
+    <sys:String x:Key="Register">Registruj se</sys:String>
+    <sys:String x:Key="BackToLogin">Nazad na prijavu</sys:String>
+
+    <sys:String x:Key="ProductName">Naziv proizvoda</sys:String>
 	<sys:String x:Key="Description">Opis</sys:String>
 	<sys:String x:Key="Price">Cijena (KM)</sys:String>
 	<sys:String x:Key="InStock">Na stanju</sys:String>

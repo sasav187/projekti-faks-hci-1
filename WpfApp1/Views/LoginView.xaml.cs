@@ -1,4 +1,5 @@
 ﻿using ProdavnicaApp.Models;
+using ProdavnicaApp.Views;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -72,6 +73,13 @@ namespace ProdavnicaApp
                 string themeKey = item.Tag.ToString();
                 App.ApplyMaterialTheme(themeKey);
             }
+        }
+
+        private void OpenRegister_Click(object sender, RoutedEventArgs e)
+        {
+            var registerView = new RegisterView();
+            registerView.Show();
+            this.Close(); 
         }
 
     }

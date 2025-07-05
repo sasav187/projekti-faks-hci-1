@@ -65,5 +65,22 @@ namespace ProdavnicaApp.DAL
             return list;
         }
 
+        public static void Insert(Korisnik korisnik)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+
+            var cmd = new MySqlCommand(@"INSERT INTO korisnik (Ime, Prezime, Email, Lozinka, DatumRegistracije, UlogaId) 
+                                 VALUES (@Ime, @Prezime, @Email, @Lozinka, @Datum, @Uloga)", conn);
+            cmd.Parameters.AddWithValue("@Ime", korisnik.Ime);
+            cmd.Parameters.AddWithValue("@Prezime", korisnik.Prezime);
+            cmd.Parameters.AddWithValue("@Email", korisnik.Email);
+            cmd.Parameters.AddWithValue("@Lozinka", korisnik.Lozinka);
+            cmd.Parameters.AddWithValue("@Datum", korisnik.DatumRegistracije);
+            cmd.Parameters.AddWithValue("@Uloga", korisnik.UlogaId);
+            cmd.ExecuteNonQuery();
+        }
+
+
     }
 }

@@ -67,17 +67,12 @@ namespace ProdavnicaApp
         }
 
 
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Window window in Application.Current.Windows)
-            {
-                if (window != this)
-                    window.Close();
-            }
+            var loginView = new LoginView();
+            loginView.Show();
 
             this.Close();
-
-            Application.Current.Shutdown();
         }
     }
 }

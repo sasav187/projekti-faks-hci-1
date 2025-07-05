@@ -35,13 +35,7 @@
             </ComboBoxItem>
         </ComboBox>
 
-
-        <!--<ComboBox Width="120" SelectionChanged="Language_SelectionChanged" Margin="10">
-            <ComboBoxItem Content="Srpski" Tag="sr" IsSelected="True"/>
-            <ComboBoxItem Content="English" Tag="en"/>
-            </ComboBox> -->
-
-            <TextBlock Text="{DynamicResource AddCategory}" FontWeight="Bold" FontSize="16" />
+        <TextBlock Text="{DynamicResource AddCategory}" FontWeight="Bold" FontSize="16" />
         <TextBox x:Name="KategorijaNazivTextBox" Width="300" Margin="0,5" 
                  materialDesign:HintAssist.Hint="{DynamicResource CategoryName}" />
         <Button Content="{DynamicResource AddCategory}" Width="150" Margin="0,10" Click="DodajKategoriju_Click" />
@@ -77,5 +71,12 @@
 			</ListBox.ItemTemplate>
 		</ListBox>
 
-	</StackPanel>
+        <Button Content="{DynamicResource Logout}"
+                Width="100"
+                Height="40"
+                Margin="10"
+                Click="Logout_Click"
+                Style="{StaticResource MaterialDesignFlatButton}" />
+
+    </StackPanel>
 </Window>
