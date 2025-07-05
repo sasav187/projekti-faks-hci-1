@@ -14,7 +14,7 @@ namespace ProdavnicaApp
         {
             InitializeComponent();
             _korisnik = korisnik;
-            UserInfo.Text = $"Prijavljeni korisnik: {_korisnik.Ime} {_korisnik.Prezime}";
+            UserInfo.Text = $" {_korisnik.Ime} {_korisnik.Prezime}";
             LoadKategorije();
         }
 
@@ -32,7 +32,71 @@ namespace ProdavnicaApp
                 ProizvodiListBox.ItemsSource = proizvodi;
 
                 if (proizvodi.Count == 0)
+                {
                     MessageBox.Show("Nema proizvoda u odabranoj kategoriji.", "Obavještenje", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+        }
+
+        private void PoruciButton_Click(object sender, RoutedEventArgs e)
+        {
+            StatusTextBlock.Text = string.Empty;
+
+            if (ProizvodiListBox.SelectedItem is not Proizvod odabraniProizvod)
+            {
+                StatusTextBlock.Text = "Molimo odaberite proizvod.";
+                return;
+            }
+
+            if (!int.TryParse(KolicinaTextBox.Text, out int kolicina) || kolicina <= 0)
+            {
+                StatusTextBlock.Text = "Unesite validnu količinu (pozitivan cijeli broj).";
+                return;
+            }
+
+            if (kolicina > odabraniProizvod.NaStanju)
+            {
+                StatusTextBlock.Text = "Nema dovoljno proizvoda na stanju.";
+                return;
+            }
+
+            try
+            {
+                var narudzba = new Narudzba
+                {
+                    KorisnikId = _korisnik.Id,
+                    AdresaId = 1,
+                    DatumNarudzbe = DateTime.Now,
+                    UkupnaCijena = odabraniProizvod.Cijena * kolicina,
+                    Status = "U obradi"
+                };
+
+                NarudzbaDAO.Insert(narudzba);
+
+                int narudzbaId = NarudzbaDAO.GetLastInsertedId();
+
+                var stavka = new StavkaNarudzbe
+                {
+                    NarudzbaId = narudzbaId,
+                    ProizvodId = odabraniProizvod.IdProizvoda,
+                    Kolicina = kolicina,
+                    Cijena = odabraniProizvod.Cijena
+                };
+
+                StavkaNarudzbeDAO.Insert(stavka);
+
+                odabraniProizvod.NaStanju -= kolicina;
+                ProizvodiListBox.Items.Refresh();
+
+                StatusTextBlock.Foreground = System.Windows.Media.Brushes.Green;
+                StatusTextBlock.Text = "Narudžba je uspješno kreirana!";
+
+                KolicinaTextBox.Clear();
+            }
+            catch (Exception ex)
+            {
+                StatusTextBlock.Foreground = System.Windows.Media.Brushes.Red;
+                StatusTextBlock.Text = $"Greška prilikom naručivanja: {ex.Message}";
             }
         }
 
@@ -66,12 +130,10 @@ namespace ProdavnicaApp
             }
         }
 
-
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             var loginView = new LoginView();
             loginView.Show();
-
             this.Close();
         }
     }

@@ -12,21 +12,17 @@ namespace ProdavnicaApp.Helpers
 
     public static class UserSettingsManager
     {
-        // Vraća root folder gde su svi folderi projekta (npr. iznad bin/Debug/netX.X)
         private static string GetProjectRootFolderPath()
         {
             var baseDir = AppDomain.CurrentDomain.BaseDirectory;
             var directoryInfo = new DirectoryInfo(baseDir);
 
-            // Ide dva nivoa iznad (iz bin/Debug/netX.X u root projekta)
             if (directoryInfo.Parent != null && directoryInfo.Parent.Parent != null)
                 return directoryInfo.Parent.Parent.FullName;
 
-            // fallback - ako ne može, vrati current baseDir
             return baseDir;
         }
 
-        // Vraća putanju foldera za čuvanje (možeš i izbaciti folder i direktno koristiti root)
         private static string GetSettingsFolderPath()
         {
             string rootFolder = GetProjectRootFolderPath();

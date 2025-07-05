@@ -26,5 +26,38 @@ namespace ProdavnicaApp.DAL
             }
             return list;
         }
+
+        public static void Insert(Narudzba narudzba)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+
+            var cmd = new MySqlCommand("INSERT INTO narudzba (KorisnikId, AdresaId, Datum, UkupnaCijena, Status)" +
+                                       " VALUES (@kid, @aid, @datum, @ukup, @stat)", conn);
+            cmd.Parameters.AddWithValue("@kid", narudzba.KorisnikId);
+            cmd.Parameters.AddWithValue("@aid", narudzba.AdresaId);
+            cmd.Parameters.AddWithValue("@datum", narudzba.DatumNarudzbe);
+            cmd.Parameters.AddWithValue("@ukup", narudzba.UkupnaCijena);
+            cmd.Parameters.AddWithValue("@stat", narudzba.Status);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public static int GetLastInsertedId()
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+
+            string query = "SELECT LAST_INSERT_ID();";
+
+            using var cmd = new MySqlCommand(query, conn);
+
+            object result = cmd.ExecuteScalar();
+            if (result != null && int.TryParse(result.ToString(), out int lastId))
+            {
+                return lastId;
+            }
+            return 0;
+        }
     }
 }

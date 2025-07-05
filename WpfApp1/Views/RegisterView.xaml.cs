@@ -29,13 +29,13 @@ namespace ProdavnicaApp.Views
                 string.IsNullOrWhiteSpace(Lozinka) ||
                 string.IsNullOrWhiteSpace(Potvrda))
             {
-                MessageBox.Show("Sva polja su obavezna.");
+                MessageBox.Show("Sva polja su obavezna.", "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             if (Lozinka != Potvrda)
             {
-                MessageBox.Show("Lozinke se ne podudaraju.");
+                MessageBox.Show("Lozinke se ne podudaraju.", "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

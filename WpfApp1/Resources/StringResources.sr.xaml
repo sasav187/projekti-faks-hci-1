@@ -6,7 +6,7 @@
 	<sys:String x:Key="TitleLogin">Prijava</sys:String>
 	<sys:String x:Key="TitleAdmin">Admin Meni</sys:String>
 
-	<sys:String x:Key="Welcome">Dobrodošli u sistem prodavnice</sys:String>
+    <sys:String x:Key="Welcome">Dobrodošli u sistem prodavnice</sys:String>
     <sys:String x:Key="WelcomeLogin">Dobrodošli, prijavi se</sys:String>
 	<sys:String x:Key="Login">Prijavi se</sys:String>
 	<sys:String x:Key="Email">Email</sys:String>
@@ -31,12 +31,15 @@
     <sys:String x:Key="Register">Registruj se</sys:String>
     <sys:String x:Key="BackToLogin">Nazad na prijavu</sys:String>
 
+    <sys:String x:Key="CategorySelect">Izaberi kategoriju</sys:String>
     <sys:String x:Key="ProductName">Naziv proizvoda</sys:String>
 	<sys:String x:Key="Description">Opis</sys:String>
 	<sys:String x:Key="Price">Cijena (KM)</sys:String>
 	<sys:String x:Key="InStock">Na stanju</sys:String>
 	<sys:String x:Key="Category">Kategorija</sys:String>
 	<sys:String x:Key="CategoryName">Naziv kategorije</sys:String>
+    <sys:String x:Key="Order">Naruči</sys:String>
+    <sys:String x:Key="ProductQuantity">Unesi količinu</sys:String>
 
     <sys:String	x:Key="ThemeFirst">Svijetla</sys:String>
     <sys:String	x:Key="ThemeSecond">Tamna</sys:String>

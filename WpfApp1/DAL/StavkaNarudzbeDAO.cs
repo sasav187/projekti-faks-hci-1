@@ -25,5 +25,22 @@ namespace ProdavnicaApp.DAL
             }
             return list;
         }
+
+        public static void Insert(StavkaNarudzbe stavka)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+
+            string query = @"INSERT INTO stavkanarudzbe (NarudzbaId, ProizvodId, Kolicina, Cijena)
+                             VALUES (@narudzbaId, @proizvodId, @kolicina, @cijena)";
+
+            using var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@narudzbaId", stavka.NarudzbaId);
+            cmd.Parameters.AddWithValue("@proizvodId", stavka.ProizvodId);
+            cmd.Parameters.AddWithValue("@kolicina", stavka.Kolicina);
+            cmd.Parameters.AddWithValue("@cijena", stavka.Cijena);
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }
