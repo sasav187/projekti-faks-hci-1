@@ -27,6 +27,7 @@
     <sys:String x:Key="RegisterTitle">Create an Account</sys:String>
     <sys:String x:Key="FirstName">First Name</sys:String>
     <sys:String x:Key="LastName">Last Name</sys:String>
+    <sys:String x:Key="ConfirmPassword">Confirm Password</sys:String>
     <sys:String x:Key="Register">Register</sys:String>
     <sys:String x:Key="BackToLogin">Back to Login</sys:String>
 

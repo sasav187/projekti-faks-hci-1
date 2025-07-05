@@ -1,6 +1,5 @@
 ﻿using ProdavnicaApp.DAL;
 using ProdavnicaApp.Models;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 

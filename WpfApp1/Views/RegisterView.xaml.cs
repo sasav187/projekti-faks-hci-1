@@ -1,6 +1,5 @@
 ﻿using ProdavnicaApp.DAL;
 using ProdavnicaApp.Models;
-using System;
 using System.Windows;
 
 namespace ProdavnicaApp.Views
@@ -15,24 +14,40 @@ namespace ProdavnicaApp.Views
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-            var korisnik = new Korisnik
-            {
-                Ime = ImeTextBox.Text.Trim(),
-                Prezime = PrezimeTextBox.Text.Trim(),
-                Email = EmailTextBox.Text.Trim(),
-                Lozinka = LozinkaBox.Password,
-                DatumRegistracije = DateTime.Now,
-                UlogaId = 1 
-            };
 
-            if (string.IsNullOrWhiteSpace(korisnik.Ime) ||
-                string.IsNullOrWhiteSpace(korisnik.Prezime) ||
-                string.IsNullOrWhiteSpace(korisnik.Email) ||
-                string.IsNullOrWhiteSpace(korisnik.Lozinka))
+            string Ime = ImeTextBox.Text.Trim();
+            string Prezime = PrezimeTextBox.Text.Trim();
+            string Email = EmailTextBox.Text.Trim();
+            string Lozinka = LozinkaBox.Password;
+            string Potvrda = PotvrdaLozinkeBox.Password;
+            DateTime DatumRegistracije = DateTime.Now;
+            int UlogaId = 1;
+
+            if (string.IsNullOrWhiteSpace(Ime) ||
+                string.IsNullOrWhiteSpace(Prezime) ||
+                string.IsNullOrWhiteSpace(Email) ||
+                string.IsNullOrWhiteSpace(Lozinka) ||
+                string.IsNullOrWhiteSpace(Potvrda))
             {
                 MessageBox.Show("Sva polja su obavezna.");
                 return;
             }
+
+            if (Lozinka != Potvrda)
+            {
+                MessageBox.Show("Lozinke se ne podudaraju.");
+                return;
+            }
+
+            var korisnik = new Korisnik
+            {
+                Ime = Ime,
+                Prezime = Prezime,
+                Email = Email,
+                Lozinka = Lozinka,
+                DatumRegistracije = DatumRegistracije,
+                UlogaId = UlogaId
+            };
 
             try
             {

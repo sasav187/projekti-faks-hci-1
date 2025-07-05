@@ -3,61 +3,63 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="{DynamicResource TitleRegister}"
-        Height="500" Width="400"
+        Height="600" Width="400"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Background="{DynamicResource MaterialDesignPaper}"
         Foreground="{DynamicResource MaterialDesignBodyLight}">
 
-	<Grid Margin="30">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*" />
-		</Grid.RowDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="30" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-		<TextBlock Grid.Row="0" Text="{DynamicResource RegisterTitle}"
-                   FontSize="22" FontWeight="Bold"
-                   HorizontalAlignment="Center" Margin="0,0,0,20"
-                   Foreground="{DynamicResource MaterialDesignBody}"/>
+            <TextBlock Text="{DynamicResource RegisterTitle}"
+                       FontSize="22" FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"
+                       Foreground="{DynamicResource MaterialDesignBody}"/>
 
-		<TextBox x:Name="ImeTextBox" Grid.Row="1"
-                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                 materialDesign:HintAssist.Hint="{DynamicResource FirstName}"
-                 Margin="0,5"
-                 Foreground="{DynamicResource MaterialDesignBody}"/>
-
-		<TextBox x:Name="PrezimeTextBox" Grid.Row="2"
-                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                 materialDesign:HintAssist.Hint="{DynamicResource LastName}"
-                 Margin="0,5"
-                 Foreground="{DynamicResource MaterialDesignBody}"/>
-
-		<TextBox x:Name="EmailTextBox" Grid.Row="3"
-                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                 materialDesign:HintAssist.Hint="{DynamicResource Email}"
-                 Margin="0,5"
-                 Foreground="{DynamicResource MaterialDesignBody}"/>
-
-		<PasswordBox x:Name="LozinkaBox" Grid.Row="4"
-                     Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
-                     materialDesign:HintAssist.Hint="{DynamicResource Password}"
-                     Margin="0,5"
+            <TextBox x:Name="ImeTextBox"
+                     Width="300" Margin="0,5"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     materialDesign:HintAssist.Hint="{DynamicResource FirstName}"
                      Foreground="{DynamicResource MaterialDesignBody}"/>
 
-		<Button Grid.Row="5" Content="{DynamicResource Register}"
-                Click="Register_Click"
-                Height="40" Margin="0,20,0,10"
-                Style="{StaticResource MaterialDesignRaisedButton}" />
+            <TextBox x:Name="PrezimeTextBox"
+                     Width="300" Margin="0,5"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     materialDesign:HintAssist.Hint="{DynamicResource LastName}"
+                     Foreground="{DynamicResource MaterialDesignBody}"/>
 
-		<Button Grid.Row="6" Content="{DynamicResource BackToLogin}"
-                Click="BackToLogin_Click"
-                Height="30"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                HorizontalAlignment="Center"/>
-	</Grid>
+            <TextBox x:Name="EmailTextBox"
+                     Width="300" Margin="0,5"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     materialDesign:HintAssist.Hint="{DynamicResource Email}"
+                     Foreground="{DynamicResource MaterialDesignBody}"/>
+
+            <PasswordBox x:Name="LozinkaBox"
+                         Width="300" Margin="0,5"
+                         Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                         materialDesign:HintAssist.Hint="{DynamicResource Password}"
+                         Foreground="{DynamicResource MaterialDesignBody}"/>
+
+            <PasswordBox x:Name="PotvrdaLozinkeBox"
+                         Width="300" Margin="0,5"
+                         Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                         materialDesign:HintAssist.Hint="{DynamicResource ConfirmPassword}"
+                         Foreground="{DynamicResource MaterialDesignBody}"/>
+
+            <Button Content="{DynamicResource Register}"
+                    Width="300" Height="40"
+                    Margin="0,20,0,10"
+                    Click="Register_Click"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+
+            <Button Content="{DynamicResource BackToLogin}"
+                    Width="200" Height="30"
+                    Click="BackToLogin_Click"
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource MaterialDesignFlatButton}" />
+
+        </StackPanel>
+    </ScrollViewer>
 </Window>

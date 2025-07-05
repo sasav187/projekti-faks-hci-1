@@ -27,6 +27,7 @@
     <sys:String x:Key="RegisterTitle">Registrujte se</sys:String>
     <sys:String x:Key="FirstName">Ime</sys:String>
     <sys:String x:Key="LastName">Prezime</sys:String>
+    <sys:String x:Key="ConfirmPassword">Potvrdi lozinku</sys:String>
     <sys:String x:Key="Register">Registruj se</sys:String>
     <sys:String x:Key="BackToLogin">Nazad na prijavu</sys:String>
 

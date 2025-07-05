@@ -68,8 +68,8 @@
                         HorizontalAlignment="Right"/>
 
                 <TextBlock Margin="0,25,0,0" HorizontalAlignment="Center"
-                           Foreground="{DynamicResource MaterialDesignBodySecondary}"
-                           FontSize="12">
+                           FontSize="12"
+                           Foreground="{DynamicResource MaterialDesignBody}">
                     <Run Text="{DynamicResource NoAccount}" />
                     <Hyperlink Click="OpenRegister_Click">
                         <Run Text="{DynamicResource RegisterHere}" />
