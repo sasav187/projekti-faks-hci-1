@@ -61,6 +61,15 @@ namespace ProdavnicaApp
                 return;
             }
 
+            var confirmWindow = new Views.ConfirmOrderView(odabraniProizvod, kolicina);
+            confirmWindow.ShowDialog();
+
+            if (!confirmWindow.PotvrdaNarudzbe)
+            {
+                StatusTextBlock.Text = "Narudžba otkazana.";
+                return;
+            }
+
             var addressView = new AddressView(_korisnik.Id);
             addressView.ShowDialog();
 

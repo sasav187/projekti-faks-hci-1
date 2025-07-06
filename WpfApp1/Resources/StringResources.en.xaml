@@ -6,8 +6,7 @@
 	<sys:String x:Key="TitleLogin">Login</sys:String>
 	<sys:String x:Key="TitleAdmin">Admin Menu</sys:String>
 
-	<sys:String x:Key="Welcome">Welcome to the store system</sys:String>
-    <sys:String x:Key="UserInfo">Logged in</sys:String>
+    <sys:String x:Key="Welcome">Welcome to the store system</sys:String>
     <sys:String x:Key="WelcomeLogin">Welcome, log in</sys:String>
     <sys:String x:Key="Login">Log in</sys:String>
 	<sys:String x:Key="Email">Email</sys:String>
@@ -56,5 +55,10 @@
     <sys:String	x:Key="PersonalAddress">Personal</sys:String>
     <sys:String	x:Key="DeliveryAddress">Delivery</sys:String>
     <sys:String	x:Key="Confirm">Confirm</sys:String>
+    <sys:String	x:Key="Cancel">Cancel</sys:String>
+    <sys:String x:Key="OrderConfirmation">Confirm Order</sys:String>
+    <sys:String x:Key="Total">Total</sys:String>
+    <sys:String x:Key="ConfirmQuantity">Quantity</sys:String>
+    <sys:String x:Key="ProductPrice">Price</sys:String>
 
 </ResourceDictionary>

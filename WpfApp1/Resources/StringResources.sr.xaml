@@ -55,5 +55,10 @@
     <sys:String	x:Key="PersonalAddress">Licna</sys:String>
     <sys:String	x:Key="DeliveryAddress">Isporuka</sys:String>
     <sys:String	x:Key="Confirm">Potvrdi</sys:String>
+    <sys:String	x:Key="Cancel">Otkaži</sys:String>
+    <sys:String x:Key="OrderConfirmation">Potvrdi narudžbu</sys:String>
+    <sys:String x:Key="Total">Ukupno</sys:String>
+    <sys:String x:Key="ConfirmQuantity">Količina</sys:String>
+    <sys:String x:Key="ProductPrice">Cijena</sys:String>
 
 </ResourceDictionary>
