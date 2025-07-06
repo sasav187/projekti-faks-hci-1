@@ -45,4 +45,15 @@
     <sys:String	x:Key="ThemeSecond">Tamna</sys:String>
     <sys:String	x:Key="ThemeThird">Zelena</sys:String>
 
+    <sys:String	x:Key="TitleAddress">Adresa</sys:String>
+    <sys:String	x:Key="AddressTitle">Unesite adresu</sys:String>
+    <sys:String	x:Key="Street">Ulica</sys:String>
+    <sys:String	x:Key="City">Grad</sys:String>
+    <sys:String	x:Key="PostCode">Poštanski broj</sys:String>
+    <sys:String	x:Key="Country">Država</sys:String>
+    <sys:String	x:Key="AddressType">Tip adrese</sys:String>
+    <sys:String	x:Key="PersonalAddress">Licna</sys:String>
+    <sys:String	x:Key="DeliveryAddress">Isporuka</sys:String>
+    <sys:String	x:Key="Confirm">Potvrdi</sys:String>
+
 </ResourceDictionary>

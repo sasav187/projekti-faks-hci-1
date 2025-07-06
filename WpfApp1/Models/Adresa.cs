@@ -8,6 +8,6 @@
         public string Grad { get; set; }
         public string PostanskiBroj { get; set; }
         public string Drzava { get; set; }
-        public string Tip { get; set; } // e.g., "Dostava", "Faktura"
+        public string Tip { get; set; } 
     }
 }

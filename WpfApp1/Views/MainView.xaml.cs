@@ -2,6 +2,7 @@
 using ProdavnicaApp.Models;
 using System.Windows;
 using System.Windows.Controls;
+using ProdavnicaApp.Views;
 
 namespace ProdavnicaApp
 {
@@ -38,7 +39,7 @@ namespace ProdavnicaApp
             }
         }
 
-        private void PoruciButton_Click(object sender, RoutedEventArgs e)
+        private void NaruciButton_Click(object sender, RoutedEventArgs e)
         {
             StatusTextBlock.Text = string.Empty;
 
@@ -60,12 +61,23 @@ namespace ProdavnicaApp
                 return;
             }
 
+            var addressView = new AddressView(_korisnik.Id);
+            addressView.ShowDialog();
+
+            var adresa = addressView.UnesenaAdresa;
+
+            if (addressView.UnesenaAdresa == null)
+            {
+                StatusTextBlock.Text = "Niste unijeli adresu za dostavu.";
+                return;
+            }
+
             try
             {
                 var narudzba = new Narudzba
                 {
                     KorisnikId = _korisnik.Id,
-                    AdresaId = 1,
+                    AdresaId = adresa.Id,
                     DatumNarudzbe = DateTime.Now,
                     UkupnaCijena = odabraniProizvod.Cijena * kolicina,
                     Status = "U obradi"

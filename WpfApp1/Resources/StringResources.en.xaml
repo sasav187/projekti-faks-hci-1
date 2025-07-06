@@ -46,4 +46,15 @@
     <sys:String	x:Key="ThemeSecond">Dark</sys:String>
     <sys:String	x:Key="ThemeThird">Green</sys:String>
 
+    <sys:String	x:Key="TitleAddress">Address</sys:String>
+    <sys:String	x:Key="AddressTitle">Insert Address Details</sys:String>
+    <sys:String	x:Key="Street">Street</sys:String>
+    <sys:String	x:Key="City">City</sys:String>
+    <sys:String	x:Key="PostCode">Post Code</sys:String>
+    <sys:String	x:Key="Country">Country</sys:String>
+    <sys:String	x:Key="AddressType">Address Type</sys:String>
+    <sys:String	x:Key="PersonalAddress">Personal</sys:String>
+    <sys:String	x:Key="DeliveryAddress">Delivery</sys:String>
+    <sys:String	x:Key="Confirm">Confirm</sys:String>
+
 </ResourceDictionary>

@@ -31,5 +31,40 @@ namespace ProdavnicaApp.DAL
 
             return list;
         }
+
+        public static void Insert(Adresa adresa)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+
+            var cmd = new MySqlCommand("INSERT INTO adresa (KorisnikId, Ulica, Grad, PostanskiBroj, Drzava, Tip)" +
+                                       " VALUES (@kid, @ulica, @grad, @pbroj, @drzava, @tip)", conn);
+            cmd.Parameters.AddWithValue("@kid", adresa.KorisnikId);
+            cmd.Parameters.AddWithValue("@ulica", adresa.Ulica);
+            cmd.Parameters.AddWithValue("@grad", adresa.Grad);  
+            cmd.Parameters.AddWithValue("@pbroj", adresa.PostanskiBroj);
+            cmd.Parameters.AddWithValue("@drzava", adresa.Drzava);  
+            cmd.Parameters.AddWithValue("@tip", adresa.Tip);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public static int GetLastInsertedId()
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+
+            string query = "SELECT LAST_INSERT_ID();";
+
+            using var cmd = new MySqlCommand(query, conn);
+
+            object result = cmd.ExecuteScalar();
+            if (result != null && int.TryParse(result.ToString(), out int lastId))
+            {
+                return lastId;
+            }
+            return 0;
+        }
+
     }
 }
