@@ -5,6 +5,8 @@
 	<sys:String x:Key="TitleMain">Main Menu</sys:String>
 	<sys:String x:Key="TitleLogin">Login</sys:String>
 	<sys:String x:Key="TitleAdmin">Admin Menu</sys:String>
+    <sys:String x:Key="TitleRegister">Register</sys:String>
+    <sys:String	x:Key="TitleAddress">Address</sys:String>
 
     <sys:String x:Key="Welcome">Welcome to the store system</sys:String>
     <sys:String x:Key="WelcomeLogin">Welcome, log in</sys:String>
@@ -23,7 +25,6 @@
     <sys:String x:Key="NoAccount">Don't have an account?</sys:String>
     <sys:String x:Key="RegisterHere">Register here</sys:String>
 
-    <sys:String x:Key="TitleRegister">Register</sys:String>
     <sys:String x:Key="RegisterTitle">Create an Account</sys:String>
     <sys:String x:Key="FirstName">First Name</sys:String>
     <sys:String x:Key="LastName">Last Name</sys:String>
@@ -45,7 +46,6 @@
     <sys:String	x:Key="ThemeSecond">Dark</sys:String>
     <sys:String	x:Key="ThemeThird">Green</sys:String>
 
-    <sys:String	x:Key="TitleAddress">Address</sys:String>
     <sys:String	x:Key="AddressTitle">Insert Address Details</sys:String>
     <sys:String	x:Key="Street">Street</sys:String>
     <sys:String	x:Key="City">City</sys:String>
@@ -60,5 +60,7 @@
     <sys:String x:Key="Total">Total</sys:String>
     <sys:String x:Key="ConfirmQuantity">Quantity</sys:String>
     <sys:String x:Key="ProductPrice">Price</sys:String>
+
+    <sys:String	x:Key="ChoosePayment">Choose payment method</sys:String>
 
 </ResourceDictionary>

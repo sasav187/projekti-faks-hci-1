@@ -25,5 +25,18 @@ namespace ProdavnicaApp.DAL
             }
             return list;
         }
-    }   
+
+        public static void Insert(Placanje placanje)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("INSERT INTO placanje (NarudzbaId, Iznos, Nacin, DatumPlacanja) " +
+                                       "VALUES (@NarudzbaId, @Iznos, @Nacin, @DatumPlacanja)", conn);
+            cmd.Parameters.AddWithValue("@NarudzbaId", placanje.NarudzbaId);
+            cmd.Parameters.AddWithValue("@Iznos", placanje.Iznos);
+            cmd.Parameters.AddWithValue("@Nacin", placanje.NacinPlacanja);
+            cmd.Parameters.AddWithValue("@DatumPlacanja", placanje.DatumPlacanja);
+            cmd.ExecuteNonQuery();
+        }
+    }
 }

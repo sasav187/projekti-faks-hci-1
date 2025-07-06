@@ -16,7 +16,7 @@
                       Foreground="{DynamicResource MaterialDesignBody}">
                 <ComboBoxItem Content="{DynamicResource ThemeFirst}" Tag="LightPurpleLime" IsSelected="True"/>
                 <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkBlueAmber"/>
-                <ComboBoxItem Content="{DynamicResource ThemeThird}" Tag="LightGreenPink"/>
+                <ComboBoxItem Content="{DynamicResource ThemeThird}" Tag="DarkGreenPink"/>
             </ComboBox>
 
             <ComboBox Width="150" SelectionChanged="Language_SelectionChanged" Margin="10">

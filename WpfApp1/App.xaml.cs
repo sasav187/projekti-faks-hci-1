@@ -26,12 +26,12 @@ namespace ProdavnicaApp
 
                 case "DarkBlueAmber":
                     bundledTheme.BaseTheme = BaseTheme.Dark;
-                    bundledTheme.PrimaryColor = PrimaryColor.Blue;
+                    bundledTheme.PrimaryColor = PrimaryColor.BlueGrey;
                     bundledTheme.SecondaryColor = SecondaryColor.Amber;
                     break;
 
-                case "LightGreenPink":
-                    bundledTheme.BaseTheme = BaseTheme.Light;
+                case "DarkGreenPink":
+                    bundledTheme.BaseTheme = BaseTheme.Dark;
                     bundledTheme.PrimaryColor = PrimaryColor.Green;
                     bundledTheme.SecondaryColor = SecondaryColor.Pink;
                     break;

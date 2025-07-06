@@ -104,6 +104,9 @@ namespace ProdavnicaApp
                     Cijena = odabraniProizvod.Cijena
                 };
 
+                var paymentWindow = new PaymentView(narudzbaId, narudzba.UkupnaCijena);
+                paymentWindow.ShowDialog();
+
                 StavkaNarudzbeDAO.Insert(stavka);
 
                 odabraniProizvod.NaStanju -= kolicina;

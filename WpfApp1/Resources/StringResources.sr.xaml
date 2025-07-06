@@ -61,4 +61,6 @@
     <sys:String x:Key="ConfirmQuantity">Količina</sys:String>
     <sys:String x:Key="ProductPrice">Cijena</sys:String>
 
+    <sys:String	x:Key="ChoosePayment">Izaberi način plaćanja</sys:String>
+
 </ResourceDictionary>

@@ -9,8 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Payments\card.png" />
+    <None Remove="Resources\Payments\cash.png" />
+    <None Remove="Resources\Payments\paypal.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Page Remove="Resources\StringResources.en.xaml" />
     <Page Remove="Resources\StringResources.sr.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Payments\paypal.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +38,8 @@
   <ItemGroup>
     <Resource Include="Resources\Flags\en.png" />
     <Resource Include="Resources\Flags\sr.png" />
+    <Resource Include="Resources\Payments\card.png" />
+    <Resource Include="Resources\Payments\cash.png" />
     <Resource Include="Resources\StringResources.en.xaml" />
     <Resource Include="Resources\StringResources.sr.xaml" />
   </ItemGroup>
