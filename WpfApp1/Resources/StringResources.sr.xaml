@@ -5,6 +5,9 @@
 	<sys:String x:Key="TitleMain">Glavni Meni</sys:String>
 	<sys:String x:Key="TitleLogin">Prijava</sys:String>
 	<sys:String x:Key="TitleAdmin">Admin Meni</sys:String>
+    <sys:String x:Key="TitleRegister">Registracija</sys:String>
+    <sys:String	x:Key="TitleAddress">Adresa</sys:String>
+    <sys:String x:Key="TitlePayment">Plaćanje</sys:String>
 
     <sys:String x:Key="Welcome">Dobrodošli u sistem prodavnice</sys:String>
     <sys:String x:Key="WelcomeLogin">Dobrodošli, prijavi se</sys:String>
@@ -23,7 +26,6 @@
     <sys:String x:Key="NoAccount">Nemate nalog?</sys:String>
     <sys:String x:Key="RegisterHere">Registrujte se ovdje</sys:String>
 
-    <sys:String x:Key="TitleRegister">Registracija</sys:String>
     <sys:String x:Key="RegisterTitle">Registrujte se</sys:String>
     <sys:String x:Key="FirstName">Ime</sys:String>
     <sys:String x:Key="LastName">Prezime</sys:String>
@@ -40,12 +42,12 @@
 	<sys:String x:Key="CategoryName">Naziv kategorije</sys:String>
     <sys:String x:Key="Order">Naruči</sys:String>
     <sys:String x:Key="ProductQuantity">Unesi količinu</sys:String>
+    <sys:String x:Key="CouponCode">Unesite kod kupona (opcionalno)</sys:String>
 
     <sys:String	x:Key="ThemeFirst">Svijetla</sys:String>
     <sys:String	x:Key="ThemeSecond">Tamna</sys:String>
     <sys:String	x:Key="ThemeThird">Zelena</sys:String>
 
-    <sys:String	x:Key="TitleAddress">Adresa</sys:String>
     <sys:String	x:Key="AddressTitle">Unesite adresu</sys:String>
     <sys:String	x:Key="Street">Ulica</sys:String>
     <sys:String	x:Key="City">Grad</sys:String>

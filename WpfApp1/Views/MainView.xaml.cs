@@ -61,6 +61,27 @@ namespace ProdavnicaApp
                 return;
             }
 
+            string kodKupona = KuponTextBox.Text.Trim();
+            decimal popust = 0;
+
+            if (!string.IsNullOrEmpty(kodKupona))
+            {
+                var kupon = KuponDAO.GetByKod(kodKupona);
+                if (kupon == null)
+                {
+                    StatusTextBlock.Text = "Kupon ne postoji.";
+                    return;
+                }
+                if (kupon.VaziDo < DateTime.Today)
+                {
+                    StatusTextBlock.Text = "Kupon je istekao.";
+                    return;
+                }
+
+                popust = kupon.Popust;
+                odabraniProizvod.Cijena = Math.Round(odabraniProizvod.Cijena * (1 - popust / 100), 2);
+            }
+
             var confirmWindow = new Views.ConfirmOrderView(odabraniProizvod, kolicina);
             confirmWindow.ShowDialog();
 

@@ -23,5 +23,24 @@ namespace ProdavnicaApp.DAL
             }
             return list;
         }
+
+        public static Kupon? GetByKod(string kod)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("SELECT * FROM kupon WHERE Kod = @kod", conn);
+            cmd.Parameters.AddWithValue("@kod", kod);
+            using var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return new Kupon
+                {
+                    Kod = reader["Kod"].ToString(),
+                    Popust = reader.GetDecimal("Popust"),
+                    VaziDo = reader.GetDateTime("VaziDo")
+                };
+            }
+            return null;
+        }
     }
 }

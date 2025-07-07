@@ -94,6 +94,9 @@
                     <Button Content="{DynamicResource Order}" Width="120" Height="40" Margin="20,0,0,0"
                             Click="NaruciButton_Click"
                             Style="{StaticResource MaterialDesignRaisedButton}"/>
+                    <TextBox x:Name="KuponTextBox" Width="200" Height="30" Margin="20,0,0,0"
+                             materialDesign:HintAssist.Hint="{DynamicResource CouponCode}"
+                             Foreground="{DynamicResource MaterialDesignBody}"/>
                 </StackPanel>
 
                 <TextBlock x:Name="StatusTextBlock" FontWeight="Bold" FontSize="14" Foreground="Red" />
