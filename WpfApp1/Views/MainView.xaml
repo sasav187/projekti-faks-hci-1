@@ -94,6 +94,14 @@
                     <Button Content="{DynamicResource Order}" Width="120" Height="40" Margin="20,0,0,0"
                             Click="NaruciButton_Click"
                             Style="{StaticResource MaterialDesignRaisedButton}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,20" VerticalAlignment="Center" >
+                    <Button Content="{DynamicResource FinishOrder}" Width="150" Height="40" Margin="20,0,0,0"
+                            HorizontalAlignment="Left"
+                            Click="ZavrsiNarudzbu_Click"
+                            Style="{StaticResource MaterialDesignRaisedButton}" />
+
                     <TextBox x:Name="KuponTextBox" Width="200" Height="30" Margin="20,0,0,0"
                              materialDesign:HintAssist.Hint="{DynamicResource CouponCode}"
                              Foreground="{DynamicResource MaterialDesignBody}"/>

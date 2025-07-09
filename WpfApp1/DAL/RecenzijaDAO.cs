@@ -25,5 +25,22 @@ namespace ProdavnicaApp.DAL
             }
             return list;
         }
+
+        public static void Insert(Recenzija recenzija)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+
+            var cmd = new MySqlCommand("INSERT INTO recenzija (KorisnikId, ProizvodId, Ocjena, Komentar, Datum)" +
+                                       "VALUES (@kid, @pid, @ocj, @kom, @dat)", conn);
+
+            cmd.Parameters.AddWithValue("@kid", recenzija.KorisnikId);
+            cmd.Parameters.AddWithValue("@pid", recenzija.ProizvodId);
+            cmd.Parameters.AddWithValue("@ocj", recenzija.Ocjena);
+            cmd.Parameters.AddWithValue("@kom", recenzija.Komentar);
+            cmd.Parameters.AddWithValue("@dat", recenzija.DatumRecenzije);
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }

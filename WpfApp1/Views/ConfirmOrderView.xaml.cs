@@ -1,22 +1,39 @@
-﻿using System.Windows;
-using ProdavnicaApp.Models;
+﻿using ProdavnicaApp.Models;
+using ProdavnicaApp.DAL;
+using System;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace ProdavnicaApp.Views
 {
     public partial class ConfirmOrderView : Window
     {
-        public bool PotvrdaNarudzbe { get; private set; } = false;
+        private readonly List<StavkaNarudzbe> _stavke;
+        public bool PotvrdaNarudzbe { get; private set; }
 
-        public ConfirmOrderView(Proizvod proizvod, int kolicina)
+        public ConfirmOrderView(List<StavkaNarudzbe> stavke, decimal ukupno)
         {
             InitializeComponent();
+            _stavke = stavke;
+            LoadStavke();
+            UkupnoTextBlock.Text = $"{Math.Round(ukupno, 2)} KM";
+        }
 
-            decimal ukupno = proizvod.Cijena * kolicina;
-
-            ProizvodTextBlock.Text = proizvod.Naziv;
-            KolicinaTextBlock.Text = kolicina.ToString();   
-            CijenaTextBlock.Text = $"{proizvod.Cijena} KM";
-            UkupnoTextBlock.Text = $"{ukupno} KM";
+        private void LoadStavke()
+        {
+            foreach (var stavka in _stavke)
+            {
+                Proizvod proizvod = ProizvodDAO.GetById(stavka.ProizvodId);
+                if (proizvod != null)
+                {
+                    string red = $"{proizvod.Naziv} - {stavka.Kolicina} x {stavka.Cijena} KM = {Math.Round(stavka.Kolicina * stavka.Cijena, 2)} KM";
+                    StavkeListBox.Items.Add(red);
+                }
+                else
+                {
+                    StavkeListBox.Items.Add($"Nepoznat proizvod ID: {stavka.ProizvodId}");
+                }
+            }
         }
 
         private void Potvrdi_Click(object sender, RoutedEventArgs e)
@@ -27,6 +44,7 @@ namespace ProdavnicaApp.Views
 
         private void Otkazi_Click(object sender, RoutedEventArgs e)
         {
+            PotvrdaNarudzbe = false;
             this.Close();
         }
     }

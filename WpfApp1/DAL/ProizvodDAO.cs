@@ -61,6 +61,44 @@ namespace ProdavnicaApp.DAL
             cmd.Parameters.AddWithValue("@cijena", proizvod.Cijena);
             cmd.Parameters.AddWithValue("@naStanju", proizvod.NaStanju);
             cmd.Parameters.AddWithValue("@kategorijaId", proizvod.KategorijaId);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public static Proizvod GetById(int id)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("SELECT * FROM proizvod WHERE Id = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id);
+            using var reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                return new Proizvod
+                {
+                    IdProizvoda = reader.GetInt32("Id"),
+                    Naziv = reader["Naziv"].ToString(),
+                    Opis = reader["Opis"].ToString(),
+                    Cijena = reader.GetDecimal("Cijena"),
+                    NaStanju = reader.GetInt32("NaStanju"),
+                    KategorijaId = reader.GetInt32("KategorijaId")
+                };
+            }
+            return null;
+        }
+
+        public static void Update(Proizvod proizvod)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("UPDATE proizvod SET Naziv = @naziv, Opis = @opis, Cijena = @cijena, " +
+                                        "NaStanju = @naStanju, KategorijaId = @kategorijaId WHERE Id = @id", conn);
+            cmd.Parameters.AddWithValue("@id", proizvod.IdProizvoda);
+            cmd.Parameters.AddWithValue("@naziv", proizvod.Naziv);
+            cmd.Parameters.AddWithValue("@opis", proizvod.Opis);
+            cmd.Parameters.AddWithValue("@cijena", proizvod.Cijena);
+            cmd.Parameters.AddWithValue("@naStanju", proizvod.NaStanju);
+            cmd.Parameters.AddWithValue("@kategorijaId", proizvod.KategorijaId);
             cmd.ExecuteNonQuery();
         }
     }

@@ -43,6 +43,7 @@
     <sys:String x:Key="Order">Naruči</sys:String>
     <sys:String x:Key="ProductQuantity">Unesi količinu</sys:String>
     <sys:String x:Key="CouponCode">Unesite kod kupona (opcionalno)</sys:String>
+    <sys:String x:Key="FinishOrder">Završi narudžbu</sys:String>
 
     <sys:String	x:Key="ThemeFirst">Svijetla</sys:String>
     <sys:String	x:Key="ThemeSecond">Tamna</sys:String>

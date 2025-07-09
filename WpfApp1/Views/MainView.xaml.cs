@@ -10,11 +10,13 @@ namespace ProdavnicaApp
     {
         private readonly Korisnik _korisnik;
         private List<Kategorija> _kategorije;
+        private List<StavkaNarudzbe> _stavkeNarudzbe;
 
         public MainView(Korisnik korisnik)
         {
             InitializeComponent();
             _korisnik = korisnik;
+            _stavkeNarudzbe = new List<StavkaNarudzbe>();
             UserInfo.Text = $" {_korisnik.Ime} {_korisnik.Prezime}";
             LoadKategorije();
         }
@@ -43,7 +45,7 @@ namespace ProdavnicaApp
         {
             StatusTextBlock.Text = string.Empty;
 
-            if (ProizvodiListBox.SelectedItem is not Proizvod odabraniProizvod)
+            if (ProizvodiListBox.SelectedItem is not Proizvod proizvod)
             {
                 StatusTextBlock.Text = "Molimo odaberite proizvod.";
                 return;
@@ -51,18 +53,49 @@ namespace ProdavnicaApp
 
             if (!int.TryParse(KolicinaTextBox.Text, out int kolicina) || kolicina <= 0)
             {
-                StatusTextBlock.Text = "Unesite validnu količinu (pozitivan cijeli broj).";
+                StatusTextBlock.Text = "Unesite validnu količinu.";
                 return;
             }
 
-            if (kolicina > odabraniProizvod.NaStanju)
+            if (kolicina > proizvod.NaStanju)
             {
                 StatusTextBlock.Text = "Nema dovoljno proizvoda na stanju.";
                 return;
             }
 
+            decimal cijena = proizvod.Cijena;
+         
+            var postojeca = _stavkeNarudzbe.FirstOrDefault(s => s.ProizvodId == proizvod.IdProizvoda);
+            if (postojeca != null)
+            {
+                postojeca.Kolicina += kolicina;
+            }
+            else
+            {
+                _stavkeNarudzbe.Add(new StavkaNarudzbe
+                {
+                    ProizvodId = proizvod.IdProizvoda,
+                    Kolicina = kolicina,
+                    Cijena = cijena
+                });
+            }
+
+            StatusTextBlock.Foreground = System.Windows.Media.Brushes.Green;
+            StatusTextBlock.Text = "Proizvod dodat u korpu.";
+            KolicinaTextBox.Clear();
+        }
+
+        private void ZavrsiNarudzbu_Click(object sender, RoutedEventArgs e)
+        {
+            if (!_stavkeNarudzbe.Any())
+            {
+                StatusTextBlock.Text = "Korpa je prazna.";
+                return;
+            }
+
+            decimal ukupnaCijena = _stavkeNarudzbe.Sum(s => s.Cijena * s.Kolicina);
+
             string kodKupona = KuponTextBox.Text.Trim();
-            decimal popust = 0;
 
             if (!string.IsNullOrEmpty(kodKupona))
             {
@@ -78,14 +111,14 @@ namespace ProdavnicaApp
                     return;
                 }
 
-                popust = kupon.Popust;
-                odabraniProizvod.Cijena = Math.Round(odabraniProizvod.Cijena * (1 - popust / 100), 2);
+                ukupnaCijena = Math.Round(ukupnaCijena * (1 - kupon.Popust / 100), 2);
             }
 
-            var confirmWindow = new Views.ConfirmOrderView(odabraniProizvod, kolicina);
-            confirmWindow.ShowDialog();
+            var confirmView = new ConfirmOrderView(_stavkeNarudzbe, ukupnaCijena);
+            confirmView.ShowDialog();
 
-            if (!confirmWindow.PotvrdaNarudzbe)
+
+            if (!confirmView.PotvrdaNarudzbe)
             {
                 StatusTextBlock.Text = "Narudžba otkazana.";
                 return;
@@ -94,11 +127,9 @@ namespace ProdavnicaApp
             var addressView = new AddressView(_korisnik.Id);
             addressView.ShowDialog();
 
-            var adresa = addressView.UnesenaAdresa;
-
             if (addressView.UnesenaAdresa == null)
             {
-                StatusTextBlock.Text = "Niste unijeli adresu za dostavu.";
+                StatusTextBlock.Text = "Niste unijeli adresu.";
                 return;
             }
 
@@ -107,43 +138,40 @@ namespace ProdavnicaApp
                 var narudzba = new Narudzba
                 {
                     KorisnikId = _korisnik.Id,
-                    AdresaId = adresa.Id,
+                    AdresaId = addressView.UnesenaAdresa.Id,
                     DatumNarudzbe = DateTime.Now,
-                    UkupnaCijena = odabraniProizvod.Cijena * kolicina,
+                    UkupnaCijena = ukupnaCijena,
                     Status = "U obradi"
                 };
 
                 NarudzbaDAO.Insert(narudzba);
-
                 int narudzbaId = NarudzbaDAO.GetLastInsertedId();
 
-                var stavka = new StavkaNarudzbe
+                foreach (var stavka in _stavkeNarudzbe)
                 {
-                    NarudzbaId = narudzbaId,
-                    ProizvodId = odabraniProizvod.IdProizvoda,
-                    Kolicina = kolicina,
-                    Cijena = odabraniProizvod.Cijena
-                };
+                    stavka.NarudzbaId = narudzbaId;
+                    StavkaNarudzbeDAO.Insert(stavka);
 
-                var paymentWindow = new PaymentView(narudzbaId, narudzba.UkupnaCijena);
-                paymentWindow.ShowDialog();
+                    var proizvod = ProizvodDAO.GetById(stavka.ProizvodId);
+                    proizvod.NaStanju -= stavka.Kolicina;
+                    ProizvodDAO.Update(proizvod);
+                }
 
-                StavkaNarudzbeDAO.Insert(stavka);
-
-                odabraniProizvod.NaStanju -= kolicina;
-                ProizvodiListBox.Items.Refresh();
+                var paymentView = new PaymentView(narudzbaId, ukupnaCijena);
+                paymentView.ShowDialog();
 
                 StatusTextBlock.Foreground = System.Windows.Media.Brushes.Green;
-                StatusTextBlock.Text = "Narudžba je uspješno kreirana!";
-
-                KolicinaTextBox.Clear();
+                StatusTextBlock.Text = "Narudžba uspješno kreirana.";
+                _stavkeNarudzbe.Clear();
+                ProizvodiListBox.Items.Refresh();
             }
             catch (Exception ex)
             {
                 StatusTextBlock.Foreground = System.Windows.Media.Brushes.Red;
-                StatusTextBlock.Text = $"Greška prilikom naručivanja: {ex.Message}";
+                StatusTextBlock.Text = $"Greška: {ex.Message}";
             }
         }
+
 
         private void Language_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
