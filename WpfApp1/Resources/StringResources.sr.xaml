@@ -66,4 +66,9 @@
 
     <sys:String	x:Key="ChoosePayment">Izaberi način plaćanja</sys:String>
 
+    <sys:String x:Key="AddCouponAdmin">Dodaj kupon</sys:String>
+    <sys:String x:Key="AddCouponCode">Dodaj kod kupona</sys:String>
+    <sys:String x:Key="CouponDiscount">Dodaj popust</sys:String>
+    <sys:String x:Key="CouponValidUntil">Dodaj datum isteka</sys:String>
+
 </ResourceDictionary>

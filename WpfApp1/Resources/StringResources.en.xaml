@@ -66,4 +66,9 @@
 
     <sys:String	x:Key="ChoosePayment">Choose payment method</sys:String>
 
+    <sys:String x:Key="AddCouponAdmin">Add Coupon</sys:String>
+    <sys:String x:Key="AddCouponCode">Add Coupon code</sys:String>
+    <sys:String x:Key="CouponDiscount">Add Discount</sys:String>
+    <sys:String x:Key="CouponValidUntil">Add Expiration Date</sys:String>
+
 </ResourceDictionary>

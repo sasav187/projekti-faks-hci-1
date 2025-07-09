@@ -94,6 +94,25 @@
                     </StackPanel>
                 </materialDesign:Card>
 
+                <materialDesign:Card Margin="0,0,0,20" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource AddCouponAdmin}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
+                                   Foreground="{DynamicResource MaterialDesignBody}"/>
+                        <TextBox x:Name="KuponKodTextBox" Width="300" Margin="0,5"
+                                 materialDesign:HintAssist.Hint="{DynamicResource AddCouponCode}"
+                                 Foreground="{DynamicResource MaterialDesignBody}" TextChanged="KuponKodTextBox_TextChanged"/>
+                        <TextBox x:Name="KuponPopustTextBox" Width="300" Margin="0,5"
+                                 materialDesign:HintAssist.Hint="{DynamicResource CouponDiscount}"
+                                 Foreground="{DynamicResource MaterialDesignBody}"/>
+                        <DatePicker x:Name="KuponVaziDoPicker" Width="300" Margin="0,5"
+                                    materialDesign:HintAssist.Hint="{DynamicResource CouponValidUntil}"
+                                    Foreground="{DynamicResource MaterialDesignBody}"/>
+                        <Button Content="{DynamicResource AddCouponAdmin}" Width="150" Margin="0,10,0,0" 
+                                Click="DodajKupon_Click"/>
+                    </StackPanel>
+                </materialDesign:Card>
+
+
                 <Button Content="{DynamicResource Logout}"
                         Width="120"
                         Height="40"

@@ -84,6 +84,43 @@ namespace ProdavnicaApp
             KategorijeComboBox.SelectedIndex = -1;
         }
 
+        private void DodajKupon_Click(object sender, RoutedEventArgs e)
+        {
+            string kod = KuponKodTextBox.Text.Trim();
+            if (!decimal.TryParse(KuponPopustTextBox.Text, out decimal popust) || popust < 0 || popust > 100)
+            {
+                MessageBox.Show("Popust mora biti broj između 0 i 100.", "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (KuponVaziDoPicker.SelectedDate == null)
+            {
+                MessageBox.Show("Odaberite datum do kada važi kupon.", "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var kupon = new Kupon
+            {
+                Kod = kod,
+                Popust = popust,
+                VaziDo = KuponVaziDoPicker.SelectedDate.Value
+            };
+
+            try
+            {
+                KuponDAO.Insert(kupon);
+                MessageBox.Show("Kupon uspješno dodat.", "Informacija", MessageBoxButton.OK, MessageBoxImage.Information);
+                KuponKodTextBox.Clear();
+                KuponPopustTextBox.Clear();
+                KuponVaziDoPicker.SelectedDate = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Greška prilikom dodavanja kupona: {ex.Message}", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
         private void Language_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is ComboBox cb && cb.SelectedItem is ComboBoxItem selected)
@@ -120,6 +157,11 @@ namespace ProdavnicaApp
             loginView.Show();
 
             this.Close(); 
+        }
+
+        private void KuponKodTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

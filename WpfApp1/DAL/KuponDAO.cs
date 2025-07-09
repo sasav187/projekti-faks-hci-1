@@ -42,5 +42,16 @@ namespace ProdavnicaApp.DAL
             }
             return null;
         }
+
+        public static void Insert(Kupon kupon)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("INSERT INTO kupon (Kod, Popust, VaziDo) VALUES (@kod, @popust, @vazido)", conn);
+            cmd.Parameters.AddWithValue("@kod", kupon.Kod);
+            cmd.Parameters.AddWithValue("@popust", kupon.Popust);
+            cmd.Parameters.AddWithValue("@vazido", kupon.VaziDo);
+            cmd.ExecuteNonQuery();
+        }
     }
 }
