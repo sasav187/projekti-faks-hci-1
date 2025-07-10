@@ -59,5 +59,27 @@ namespace ProdavnicaApp.DAL
             }
             return 0;
         }
+
+        public static List<Narudzba> GetByKorisnikId(int korisnikId)
+        {
+            var list = new List<Narudzba>();
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("SELECT * FROM narudzba WHERE KorisnikId = @kid", conn);
+            cmd.Parameters.AddWithValue("@kid", korisnikId);
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new Narudzba
+                {
+                    Id = reader.GetInt32("Id"),
+                    AdresaId = reader.GetInt32("AdresaId"),
+                    DatumNarudzbe = reader.GetDateTime("Datum"),
+                    UkupnaCijena = reader.GetDecimal("UkupnaCijena"),
+                    Status = reader["Status"].ToString()
+                });
+            }
+            return list;
+        }
     }
 }

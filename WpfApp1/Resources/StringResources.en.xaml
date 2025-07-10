@@ -22,6 +22,13 @@
     <sys:String x:Key="Logout">Log out</sys:String>
     <sys:String x:Key="EmailTip">Enter your email address</sys:String>
     <sys:String x:Key="PasswordTip">Enter your password</sys:String>
+    
+    <sys:String x:Key="OrdersTitle">View recent orders</sys:String>
+    <sys:String x:Key="OrderId">Order ID</sys:String>
+    <sys:String x:Key="UserId">User ID</sys:String>
+    <sys:String x:Key="AddressId">Address ID</sys:String>
+    <sys:String x:Key="OrderDate">Order Date</sys:String>
+    <sys:String x:Key="Status">Status</sys:String>
 
     <sys:String x:Key="NoAccount">Don't have an account?</sys:String>
     <sys:String x:Key="RegisterHere">Register here</sys:String>

@@ -14,6 +14,7 @@ namespace ProdavnicaApp
             InitializeComponent();
             LoadKategorije();
             LoadKorisnici();
+            LoadNarudzbe();
         }
 
         private void LoadKategorije()
@@ -26,6 +27,12 @@ namespace ProdavnicaApp
         {
             var korisnici = KorisnikDAO.GetNonAdminUsers();
             KorisniciListBox.ItemsSource = korisnici;
+        }
+
+        private void LoadNarudzbe()
+        {
+            var narudzbe = NarudzbaDAO.GetAll();
+            NarudzbeDataGrid.ItemsSource = narudzbe;
         }
 
         private void DodajKategoriju_Click(object sender, RoutedEventArgs e)

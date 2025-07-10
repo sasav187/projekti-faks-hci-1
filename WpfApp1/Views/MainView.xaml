@@ -85,6 +85,27 @@
                     </ListBox>
                 </materialDesign:Card>
 
+                <materialDesign:Card Margin="0,0,0,20" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource OrdersTitle}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
+                                   Foreground="{DynamicResource MaterialDesignBody}"/>
+                        <DataGrid x:Name="NarudzbeDataGrid"
+                                  AutoGenerateColumns="False"
+                                  Height="300"
+                                  CanUserAddRows="False"
+                                  IsReadOnly="True"
+                                  Foreground="{DynamicResource MaterialDesignBody}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="{DynamicResource OrderId}" Binding="{Binding Id}" Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource AddressId}" Binding="{Binding AdresaId}" Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource OrderDate}" Binding="{Binding DatumNarudzbe}" Width="*"/>
+                                <DataGridTextColumn Header="{DynamicResource Total}" Binding="{Binding UkupnaCijena}" Width="*"/>
+                                <DataGridTextColumn Header="{DynamicResource Status}" Binding="{Binding Status}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </materialDesign:Card>
+
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,20" VerticalAlignment="Center" >
                     <TextBlock Text="{DynamicResource Quantity}" VerticalAlignment="Center" Margin="0,0,10,0" 
                                Foreground="{DynamicResource MaterialDesignBody}" FontWeight="Bold" FontSize="14"/>

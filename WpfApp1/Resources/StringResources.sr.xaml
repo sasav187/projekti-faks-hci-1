@@ -10,7 +10,7 @@
     <sys:String x:Key="TitlePayment">Plaćanje</sys:String>
 
     <sys:String x:Key="Welcome">Dobrodošli u sistem prodavnice</sys:String>
-    <sys:String x:Key="WelcomeLogin">Dobrodošli, prijavi se</sys:String>
+    <sys:String x:Key="WelcomeLogin">Dobrodošli, prijavite se</sys:String>
 	<sys:String x:Key="Login">Prijavi se</sys:String>
 	<sys:String x:Key="Email">Email</sys:String>
 	<sys:String x:Key="Password">Lozinka</sys:String>
@@ -22,6 +22,13 @@
     <sys:String x:Key="Logout">Odjavi se</sys:String>
     <sys:String x:Key="EmailTip">Unesite Vašu email adresu</sys:String>
     <sys:String x:Key="PasswordTip">Unesite Vašu lozinku</sys:String>
+
+    <sys:String x:Key="OrdersTitle">Pregled prethodnih narudžbi</sys:String>
+    <sys:String x:Key="OrderId">Id narudžbe</sys:String>
+    <sys:String x:Key="UserId">Id korisnika</sys:String>
+    <sys:String x:Key="AddressId">Id adrese</sys:String>
+    <sys:String x:Key="OrderDate">Datum narudžbe</sys:String>
+    <sys:String x:Key="Status">Status</sys:String>
 
     <sys:String x:Key="NoAccount">Nemate nalog?</sys:String>
     <sys:String x:Key="RegisterHere">Registrujte se ovdje</sys:String>

@@ -19,12 +19,19 @@ namespace ProdavnicaApp
             _stavkeNarudzbe = new List<StavkaNarudzbe>();
             UserInfo.Text = $" {_korisnik.Ime} {_korisnik.Prezime}";
             LoadKategorije();
+            LoadNarudzbe(korisnik);
         }
 
         private void LoadKategorije()
         {
             _kategorije = KategorijaDAO.GetAll();
             KategorijeComboBox.ItemsSource = _kategorije;
+        }
+
+        private void LoadNarudzbe(Korisnik korisnik)
+        {
+            var narudzbe = NarudzbaDAO.GetByKorisnikId(korisnik.Id);
+            NarudzbeDataGrid.ItemsSource = narudzbe;
         }
 
         private void KategorijeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
