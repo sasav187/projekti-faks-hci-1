@@ -47,8 +47,8 @@
                       Style="{StaticResource MaterialDesignOutlinedComboBox}"
                       materialDesign:HintAssist.Hint="{DynamicResource AddressType}"
                       Foreground="{DynamicResource MaterialDesignBody}">
-				<ComboBoxItem Content="{DynamicResource PersonalAddress}" Tag="Licna"/>
-				<ComboBoxItem Content="{DynamicResource DeliveryAddress}" Tag="Isporuka"/>
+				<ComboBoxItem Content="{DynamicResource Personal}" Tag="Licna"/>
+				<ComboBoxItem Content="{DynamicResource Delivery}" Tag="Isporuka"/>
 			</ComboBox>
 			
 			<Button Content="{DynamicResource Confirm}"

@@ -42,5 +42,33 @@ namespace ProdavnicaApp.DAL
 
             cmd.ExecuteNonQuery();
         }
+
+        public static List<StavkaNarudzbe> GetByNarudzbaId(int narudzbaId)
+        {
+            var list = new List<StavkaNarudzbe>();
+
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+
+            var cmd = new MySqlCommand("SELECT s.Id, s.ProizvodId, s.Kolicina, s.Cijena," +
+                                       "p.Naziv as NazivProizvoda " +
+                                       "FROM stavkanarudzbe s " +
+                                       "JOIN proizvod p ON s.ProizvodId = p.Id " +
+                                       "WHERE s.NarudzbaId = @id ", conn);
+
+            cmd.Parameters.AddWithValue("@id", narudzbaId);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new StavkaNarudzbe
+                {
+                    NazivProizvoda = reader.GetString("NazivProizvoda"),
+                    Kolicina = reader.GetInt32("Kolicina"),
+                    Cijena = reader.GetDecimal("Cijena")
+                });
+            }
+            return list;
+        }
     }
 }

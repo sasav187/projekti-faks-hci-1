@@ -3,6 +3,7 @@ using ProdavnicaApp.Models;
 using System.Windows;
 using System.Windows.Controls;
 using ProdavnicaApp.Views;
+using MaterialDesignThemes.Wpf;
 
 namespace ProdavnicaApp
 {
@@ -176,6 +177,29 @@ namespace ProdavnicaApp
             {
                 StatusTextBlock.Foreground = System.Windows.Media.Brushes.Red;
                 StatusTextBlock.Text = $"Greška: {ex.Message}";
+            }
+        }
+
+        private void NarudzbeDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (NarudzbeDataGrid.SelectedItem is Narudzba narudzba)
+            {
+                var orderDetailsView = new OrderDetailsView(narudzba);
+                orderDetailsView.ShowDialog();
+
+                NarudzbeDataGrid.SelectedItem = null;
+                /*var stavke = StavkaNarudzbeDAO.GetByNarudzbaId(narudzba.Id);
+                StavkeDataGrid.ItemsSource = stavke;
+
+                var adresa = AdresaDAO.GetByKorisnikId(_korisnik.Id);
+                if (adresa != null)
+                {
+                    AdresaTextBlock.Text = $"{adresa.Ulica}, {adresa.Grad}, {adresa.PostanskiBroj}, {adresa.Drzava} ({adresa.Tip})";
+                }
+                else
+                {
+                    AdresaTextBlock.Text = "Adresa nije pronađena.";
+                }*/
             }
         }
 

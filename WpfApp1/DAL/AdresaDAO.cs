@@ -41,9 +41,9 @@ namespace ProdavnicaApp.DAL
                                        " VALUES (@kid, @ulica, @grad, @pbroj, @drzava, @tip)", conn);
             cmd.Parameters.AddWithValue("@kid", adresa.KorisnikId);
             cmd.Parameters.AddWithValue("@ulica", adresa.Ulica);
-            cmd.Parameters.AddWithValue("@grad", adresa.Grad);  
+            cmd.Parameters.AddWithValue("@grad", adresa.Grad);
             cmd.Parameters.AddWithValue("@pbroj", adresa.PostanskiBroj);
-            cmd.Parameters.AddWithValue("@drzava", adresa.Drzava);  
+            cmd.Parameters.AddWithValue("@drzava", adresa.Drzava);
             cmd.Parameters.AddWithValue("@tip", adresa.Tip);
 
             cmd.ExecuteNonQuery();
@@ -66,5 +66,29 @@ namespace ProdavnicaApp.DAL
             return 0;
         }
 
+        public static Adresa GetByNarudzbaId(int narudzbaId)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("SELECT a.* FROM adresa a " +
+                                       "JOIN narudzba n ON a.Id = n.AdresaId " +
+                                       "WHERE n.Id = @narudzbaId", conn);
+
+            cmd.Parameters.AddWithValue("@narudzbaId", narudzbaId);
+            using var reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return new Adresa
+                {
+                    Ulica = reader["Ulica"].ToString(),
+                    Grad = reader["Grad"].ToString(),
+                    PostanskiBroj = reader["PostanskiBroj"].ToString(),
+                    Drzava = reader["Drzava"].ToString(),
+                    Tip = reader["Tip"].ToString()
+                };
+            }
+            return null;
+        }
     }
 }

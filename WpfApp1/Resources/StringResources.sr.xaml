@@ -8,6 +8,7 @@
     <sys:String x:Key="TitleRegister">Registracija</sys:String>
     <sys:String	x:Key="TitleAddress">Adresa</sys:String>
     <sys:String x:Key="TitlePayment">Plaćanje</sys:String>
+    <sys:String x:Key="TitleOrderDetails">Detalji Narudžbe</sys:String>
 
     <sys:String x:Key="Welcome">Dobrodošli u sistem prodavnice</sys:String>
     <sys:String x:Key="WelcomeLogin">Dobrodošli, prijavite se</sys:String>
@@ -29,6 +30,7 @@
     <sys:String x:Key="AddressId">Id adrese</sys:String>
     <sys:String x:Key="OrderDate">Datum narudžbe</sys:String>
     <sys:String x:Key="Status">Status</sys:String>
+    <sys:String x:Key="Quantity">Količina</sys:String>
 
     <sys:String x:Key="NoAccount">Nemate nalog?</sys:String>
     <sys:String x:Key="RegisterHere">Registrujte se ovdje</sys:String>
@@ -39,6 +41,7 @@
     <sys:String x:Key="ConfirmPassword">Potvrdi lozinku</sys:String>
     <sys:String x:Key="Register">Registruj se</sys:String>
     <sys:String x:Key="BackToLogin">Nazad na prijavu</sys:String>
+    <sys:String x:Key="BackToMain">Nazad na glavni meni</sys:String>
 
     <sys:String x:Key="CategorySelect">Izaberi kategoriju</sys:String>
     <sys:String x:Key="ProductName">Naziv proizvoda</sys:String>
@@ -62,14 +65,16 @@
     <sys:String	x:Key="PostCode">Poštanski broj</sys:String>
     <sys:String	x:Key="Country">Država</sys:String>
     <sys:String	x:Key="AddressType">Tip adrese</sys:String>
-    <sys:String	x:Key="PersonalAddress">Licna</sys:String>
-    <sys:String	x:Key="DeliveryAddress">Isporuka</sys:String>
+    <sys:String	x:Key="Personal">Licna</sys:String>
+    <sys:String	x:Key="Delivery">Isporuka</sys:String>
     <sys:String	x:Key="Confirm">Potvrdi</sys:String>
     <sys:String	x:Key="Cancel">Otkaži</sys:String>
     <sys:String x:Key="OrderConfirmation">Potvrdi narudžbu</sys:String>
     <sys:String x:Key="Total">Ukupno</sys:String>
     <sys:String x:Key="ConfirmQuantity">Količina</sys:String>
     <sys:String x:Key="ProductPrice">Cijena</sys:String>
+    <sys:String x:Key="DeliveryAddress">Adresa isporuke</sys:String>
+    <sys:String x:Key="OrderItems">Stavke narudžbe</sys:String>
 
     <sys:String	x:Key="ChoosePayment">Izaberi način plaćanja</sys:String>
 

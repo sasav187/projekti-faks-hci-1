@@ -91,14 +91,17 @@ namespace ProdavnicaApp.DAL
         {
             using var conn = new MySqlConnection(Database.ConnectionString);
             conn.Open();
+
             var cmd = new MySqlCommand("UPDATE proizvod SET Naziv = @naziv, Opis = @opis, Cijena = @cijena, " +
                                         "NaStanju = @naStanju, KategorijaId = @kategorijaId WHERE Id = @id", conn);
+
             cmd.Parameters.AddWithValue("@id", proizvod.IdProizvoda);
             cmd.Parameters.AddWithValue("@naziv", proizvod.Naziv);
             cmd.Parameters.AddWithValue("@opis", proizvod.Opis);
             cmd.Parameters.AddWithValue("@cijena", proizvod.Cijena);
             cmd.Parameters.AddWithValue("@naStanju", proizvod.NaStanju);
             cmd.Parameters.AddWithValue("@kategorijaId", proizvod.KategorijaId);
+
             cmd.ExecuteNonQuery();
         }
     }

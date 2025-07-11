@@ -7,6 +7,6 @@
         public string Opis { get; set; }
         public decimal Cijena { get; set; }
         public int NaStanju { get; set; }
-        public int? KategorijaId { get; set; } // Nullable in case of no associated category
+        public int? KategorijaId { get; set; }
     }
 }

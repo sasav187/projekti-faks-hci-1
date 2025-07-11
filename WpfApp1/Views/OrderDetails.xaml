@@ -1,0 +1,53 @@
+<Window x:Class="ProdavnicaApp.Views.OrderDetailsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="{DynamicResource TitleOrderDetails}" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Foreground="{DynamicResource MaterialDesignBodyLight}">
+
+    <DockPanel Margin="20">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20" Width="850">
+                <materialDesign:Card Margin="0,0,0,20" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource OrderItems}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
+                                   Foreground="{DynamicResource MaterialDesignBody}"/>
+                        <DataGrid x:Name="StavkeDataGrid"
+                                  AutoGenerateColumns="False"
+                                  IsReadOnly="True"
+                                  Height="200"
+                                  Margin="0,0,0,10"
+                                  Foreground="{DynamicResource MaterialDesignBody}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="{DynamicResource ProductName}" Binding="{Binding NazivProizvoda}" />
+                                <DataGridTextColumn Header="{DynamicResource Quantity}" Binding="{Binding Kolicina}" />
+                                <DataGridTextColumn Header="{DynamicResource Price}" Binding="{Binding Cijena}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </materialDesign:Card>
+
+                <materialDesign:Card Margin="0,0,0,20" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource DeliveryAddress}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
+                                   Foreground="{DynamicResource MaterialDesignBody}"/>
+                        <TextBlock x:Name="AdresaTextBlock"
+                                   Text="--"
+                                   TextWrapping="Wrap"
+                                   Foreground="{DynamicResource MaterialDesignBody}" />
+                    </StackPanel>
+                </materialDesign:Card>
+
+                <Button Content="{DynamicResource BackToMain}"
+                        Width="200"
+                        Height="40"
+                        Margin="0,0,0,20"
+                        HorizontalAlignment="Left"
+                        Click="Back_Click"
+                        Style="{StaticResource MaterialDesignFlatButton}" />
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

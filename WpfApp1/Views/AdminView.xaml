@@ -14,8 +14,8 @@
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="0,0,0,20">
             <ComboBox x:Name="ThemeComboBox" Width="150" Margin="10" SelectionChanged="ThemeComboBox_SelectionChanged"
                       Foreground="{DynamicResource MaterialDesignBody}">
-                <ComboBoxItem Content="{DynamicResource ThemeFirst}" Tag="LightPurpleLime" IsSelected="True"/>
-                <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkBlueAmber"/>
+                <ComboBoxItem Content="{DynamicResource ThemeFirst}" Tag="LightPurpleLime" />
+                <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkPurpleAmber" IsSelected="True"/>
                 <ComboBoxItem Content="{DynamicResource ThemeThird}" Tag="DarkGreenPink"/>
             </ComboBox>
 
