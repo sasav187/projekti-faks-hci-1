@@ -20,8 +20,7 @@
                    FontSize="16" FontWeight="Bold" Margin="0,0,0,10"
                    Foreground="{DynamicResource MaterialDesignBody}" />
 
-		<ListBox x:Name="StavkeListBox" Grid.Row="1" Margin="0,0,0,10"
-                 Background="White" Foreground="Black" />
+		<ListBox x:Name="StavkeListBox" Grid.Row="1" Margin="0,0,0,10"/>
 
 		<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10">
 			<TextBlock Text="{DynamicResource Total}" FontWeight="Bold"
