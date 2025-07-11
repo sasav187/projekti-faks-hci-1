@@ -81,5 +81,15 @@ namespace ProdavnicaApp.DAL
             }
             return list;
         }
+
+        public static void UpdateStatus(int narudzbaId, string noviStatus)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("UPDATE narudzba SET Status = @status WHERE Id = @id", conn);
+            cmd.Parameters.AddWithValue("@status", noviStatus);
+            cmd.Parameters.AddWithValue("@id", narudzbaId);
+            cmd.ExecuteNonQuery();
+        }   
     }
 }

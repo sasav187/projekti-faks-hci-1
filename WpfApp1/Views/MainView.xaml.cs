@@ -188,18 +188,6 @@ namespace ProdavnicaApp
                 orderDetailsView.ShowDialog();
 
                 NarudzbeDataGrid.SelectedItem = null;
-                /*var stavke = StavkaNarudzbeDAO.GetByNarudzbaId(narudzba.Id);
-                StavkeDataGrid.ItemsSource = stavke;
-
-                var adresa = AdresaDAO.GetByKorisnikId(_korisnik.Id);
-                if (adresa != null)
-                {
-                    AdresaTextBlock.Text = $"{adresa.Ulica}, {adresa.Grad}, {adresa.PostanskiBroj}, {adresa.Drzava} ({adresa.Tip})";
-                }
-                else
-                {
-                    AdresaTextBlock.Text = "Adresa nije pronađena.";
-                }*/
             }
         }
 

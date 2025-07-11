@@ -84,6 +84,7 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Margin="5">
+                                        <TextBlock Text="{Binding Id}" FontWeight="Bold"/>
                                         <TextBlock Text="{Binding Ime}" FontWeight="Bold"/>
                                         <TextBlock Text="{Binding Email}"/>
                                         <TextBlock Text="{Binding DatumRegistracije, StringFormat='dd.MM.yyyy'}"/>
@@ -105,12 +106,28 @@
                                   IsReadOnly="True"
                                   Foreground="{DynamicResource MaterialDesignBody}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="{DynamicResource OrderId}" Binding="{Binding Id}" Width="Auto"/>
-                                <DataGridTextColumn Header="{DynamicResource UserId}" Binding="{Binding KorisnikId}" Width="Auto"/>
-                                <DataGridTextColumn Header="{DynamicResource AddressId}" Binding="{Binding AdresaId}" Width="Auto"/>
-                                <DataGridTextColumn Header="{DynamicResource OrderDate}" Binding="{Binding DatumNarudzbe}" Width="*"/>
-                                <DataGridTextColumn Header="{DynamicResource Total}" Binding="{Binding UkupnaCijena}" Width="*"/>
-                                <DataGridTextColumn Header="{DynamicResource Status}" Binding="{Binding Status}" Width="*"/>
+                                <DataGridTextColumn Header="{DynamicResource OrderId}" Binding="{Binding Id}" 
+                                                    Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource UserId}" Binding="{Binding KorisnikId}" 
+                                                    Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource AddressId}" Binding="{Binding AdresaId}" 
+                                                    Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource OrderDate}" Binding="{Binding DatumNarudzbe}" 
+                                                    Width="*"/>
+                                <DataGridTextColumn Header="{DynamicResource Total}" Binding="{Binding UkupnaCijena}" 
+                                                    Width="*"/>
+                                <DataGridTextColumn Header="{DynamicResource Status}" Binding="{Binding Status}" 
+                                                    Width="*"/>
+
+                                <DataGridTemplateColumn Header="Akcija">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Promijeni" Click="PromijeniStatus_Click"
+                                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                                    Foreground="{DynamicResource SecondaryHueMidBrush}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>
@@ -122,7 +139,7 @@
                                    Foreground="{DynamicResource MaterialDesignBody}"/>
                         <TextBox x:Name="KuponKodTextBox" Width="300" Margin="0,5"
                                  materialDesign:HintAssist.Hint="{DynamicResource AddCouponCode}"
-                                 Foreground="{DynamicResource MaterialDesignBody}" TextChanged="KuponKodTextBox_TextChanged"/>
+                                 Foreground="{DynamicResource MaterialDesignBody}"/>
                         <TextBox x:Name="KuponPopustTextBox" Width="300" Margin="0,5"
                                  materialDesign:HintAssist.Hint="{DynamicResource CouponDiscount}"
                                  Foreground="{DynamicResource MaterialDesignBody}"/>
@@ -133,7 +150,6 @@
                                 Click="DodajKupon_Click"/>
                     </StackPanel>
                 </materialDesign:Card>
-
 
                 <Button Content="{DynamicResource Logout}"
                         Width="120"

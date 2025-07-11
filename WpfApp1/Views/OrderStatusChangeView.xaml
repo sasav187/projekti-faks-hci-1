@@ -1,0 +1,21 @@
+<Window x:Class="ProdavnicaApp.Views.OrderStatusChangeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource TitleStatusChange}"
+        Height="200" Width="350" WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Foreground="{DynamicResource MaterialDesignBodyLight}">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="{DynamicResource NewStatus}" Margin="0,0,0,10"/>
+        <ComboBox x:Name="StatusComboBox" Margin="0,0,0,20">
+            <ComboBoxItem Content="{DynamicResource InProcess}" Tag="U obradi"/>
+            <ComboBoxItem Content="{DynamicResource Sent}" Tag="Poslato"/>
+            <ComboBoxItem Content="{DynamicResource Finished}" Tag="Zavrseno"/>
+        </ComboBox>
+
+        <Button Content="{DynamicResource Save}" Width="100" HorizontalAlignment="Right"
+                Click="Sacuvaj_Click"
+                Style="{StaticResource MaterialDesignRaisedButton}"/>
+    </StackPanel>
+</Window>

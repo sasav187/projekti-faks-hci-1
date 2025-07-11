@@ -9,6 +9,7 @@
     <sys:String	x:Key="TitleAddress">Address</sys:String>
     <sys:String x:Key="TitlePayment">Payment</sys:String>
     <sys:String x:Key="TitleOrderDetails">Order Details</sys:String>
+    <sys:String x:Key="TitleStatusChange">Order Status Change</sys:String>
 
     <sys:String x:Key="Welcome">Welcome to the store system</sys:String>
     <sys:String x:Key="WelcomeLogin">Welcome, log in</sys:String>
@@ -82,5 +83,11 @@
     <sys:String x:Key="AddCouponCode">Add Coupon code</sys:String>
     <sys:String x:Key="CouponDiscount">Add Discount</sys:String>
     <sys:String x:Key="CouponValidUntil">Add Expiration Date</sys:String>
+
+    <sys:String x:Key="NewStatus">New Status</sys:String> 
+    <sys:String x:Key="InProcess">In process</sys:String>
+    <sys:String x:Key="Sent">Sent</sys:String>
+    <sys:String x:Key="Finished">Finished</sys:String>
+    <sys:String x:Key="Save">Save</sys:String>
 
 </ResourceDictionary>

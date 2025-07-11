@@ -2,6 +2,7 @@
 using ProdavnicaApp.Models;
 using System.Windows;
 using System.Windows.Controls;
+using ProdavnicaApp.Views;
 
 namespace ProdavnicaApp
 {
@@ -127,7 +128,6 @@ namespace ProdavnicaApp
             }
         }
 
-
         private void Language_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is ComboBox cb && cb.SelectedItem is ComboBoxItem selected)
@@ -149,6 +149,20 @@ namespace ProdavnicaApp
             }
         }
 
+        private void PromijeniStatus_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is Narudzba narudzba)
+            {
+                var statusChangeView = new OrderStatusChangeView(narudzba);
+                statusChangeView.ShowDialog();
+
+                if (statusChangeView.StatusPromijenjen)
+                {
+                    LoadNarudzbe();
+                }
+            }
+        }
+
         private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ThemeComboBox.SelectedItem is ComboBoxItem item)
@@ -164,11 +178,6 @@ namespace ProdavnicaApp
             loginView.Show();
 
             this.Close(); 
-        }
-
-        private void KuponKodTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

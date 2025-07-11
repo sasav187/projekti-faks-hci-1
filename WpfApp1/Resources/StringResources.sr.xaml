@@ -8,7 +8,8 @@
     <sys:String x:Key="TitleRegister">Registracija</sys:String>
     <sys:String	x:Key="TitleAddress">Adresa</sys:String>
     <sys:String x:Key="TitlePayment">Plaćanje</sys:String>
-    <sys:String x:Key="TitleOrderDetails">Detalji Narudžbe</sys:String>
+    <sys:String x:Key="TitleOrderDetails">Detalji narudžbe</sys:String>
+    <sys:String x:Key="TitleStatusChange">Promjena statusa narudžbe</sys:String>
 
     <sys:String x:Key="Welcome">Dobrodošli u sistem prodavnice</sys:String>
     <sys:String x:Key="WelcomeLogin">Dobrodošli, prijavite se</sys:String>
@@ -82,5 +83,11 @@
     <sys:String x:Key="AddCouponCode">Dodaj kod kupona</sys:String>
     <sys:String x:Key="CouponDiscount">Dodaj popust</sys:String>
     <sys:String x:Key="CouponValidUntil">Dodaj datum isteka</sys:String>
+
+    <sys:String x:Key="NewStatus">Novi status</sys:String>
+    <sys:String x:Key="InProcess">U obradi</sys:String>
+    <sys:String x:Key="Sent">Poslato</sys:String>
+    <sys:String x:Key="Finished">Završeno</sys:String>
+    <sys:String x:Key="Save">Sačuvaj</sys:String>
 
 </ResourceDictionary>
