@@ -119,10 +119,10 @@
                                 <DataGridTextColumn Header="{DynamicResource Status}" Binding="{Binding Status}" 
                                                     Width="*"/>
 
-                                <DataGridTemplateColumn Header="Akcija">
+                                <DataGridTemplateColumn Header="{DynamicResource Action}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Content="Promijeni" Click="PromijeniStatus_Click"
+                                            <Button Content="{DynamicResource Change}" Click="PromijeniStatus_Click"
                                                     Style="{StaticResource MaterialDesignFlatButton}"
                                                     Foreground="{DynamicResource SecondaryHueMidBrush}" />
                                         </DataTemplate>

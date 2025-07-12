@@ -89,5 +89,7 @@
     <sys:String x:Key="Sent">Poslato</sys:String>
     <sys:String x:Key="Finished">Završeno</sys:String>
     <sys:String x:Key="Save">Sačuvaj</sys:String>
+    <sys:String x:Key="Action">Akcija</sys:String>
+    <sys:String x:Key="Change">Promijeni</sys:String>
 
 </ResourceDictionary>

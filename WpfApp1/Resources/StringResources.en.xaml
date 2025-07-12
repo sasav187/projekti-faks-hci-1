@@ -89,5 +89,7 @@
     <sys:String x:Key="Sent">Sent</sys:String>
     <sys:String x:Key="Finished">Finished</sys:String>
     <sys:String x:Key="Save">Save</sys:String>
+    <sys:String x:Key="Action">Action</sys:String>
+    <sys:String x:Key="Change">Change</sys:String>
 
 </ResourceDictionary>
