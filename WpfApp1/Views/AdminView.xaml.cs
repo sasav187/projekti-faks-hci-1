@@ -9,13 +9,67 @@ namespace ProdavnicaApp
     public partial class AdminView : Window
     {
         private List<Kategorija> _kategorije;
+        private readonly Korisnik _korisnik;
 
-        public AdminView()
+        public AdminView(Korisnik korisnik)
         {
             InitializeComponent();
+
+            _korisnik = korisnik;
+
+            SetSelectedLanguage(korisnik.Jezik);
+            SetSelectedTheme(korisnik.Tema);
+
+            ApplyLanguague(korisnik.Jezik);
+            ApplyTheme(korisnik.Tema);
+
             LoadKategorije();
             LoadKorisnici();
             LoadNarudzbe();
+        }
+
+        private void SetSelectedLanguage(string lang)
+        {
+            foreach (ComboBoxItem item in LanguageComboBox.Items)
+            {
+                if (item.Tag.ToString() == lang)
+                {
+                    LanguageComboBox.SelectedItem = item;
+                    break;
+                }
+            }
+        }
+
+        private void SetSelectedTheme(string themeKey)
+        {
+            foreach (ComboBoxItem item in ThemeComboBox.Items)
+            {
+                if (item.Tag.ToString() == themeKey)
+                {
+                    ThemeComboBox.SelectedItem = item;
+                    break;
+                }
+            }
+        }
+
+        private void ApplyLanguague(string lang)
+        {
+            string path = $"/Resources/StringResources.{lang}.xaml";
+            var newLangDict = new ResourceDictionary { Source = new Uri(path, UriKind.Relative) };
+
+            var existingLangDict = Application.Current.Resources.MergedDictionaries
+                .FirstOrDefault(d => d.Source != null && d.Source.OriginalString.Contains("StringResources."));
+
+            if (existingLangDict != null)
+                Application.Current.Resources.MergedDictionaries.Remove(existingLangDict);
+
+            Application.Current.Resources.MergedDictionaries.Add(newLangDict);
+            this.Title = TryFindResource("TitleAdmin")?.ToString();
+        }
+
+        private void ApplyTheme(string themeKey)
+        {
+            App.ApplyMaterialTheme(themeKey);
         }
 
         private void LoadKategorije()
@@ -146,6 +200,12 @@ namespace ProdavnicaApp
                 Application.Current.Resources.MergedDictionaries.Add(newLangDict);
 
                 this.Title = TryFindResource("TitleAdmin")?.ToString();
+
+                if (_korisnik != null)
+                {
+                    _korisnik.Jezik = lang;
+                    KorisnikDAO.UpdateSettings(_korisnik.Id, lang, _korisnik.Tema);
+                }
             }
         }
 
@@ -169,6 +229,12 @@ namespace ProdavnicaApp
             {
                 string themeKey = item.Tag.ToString();
                 App.ApplyMaterialTheme(themeKey);
+
+                if (_korisnik != null)
+                {
+                    _korisnik.Tema = themeKey;
+                    KorisnikDAO.UpdateSettings(_korisnik.Id, _korisnik.Jezik, themeKey);
+                }
             }
         }
 

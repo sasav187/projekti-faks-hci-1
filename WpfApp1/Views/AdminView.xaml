@@ -14,13 +14,13 @@
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="0,0,0,20">
             <ComboBox x:Name="ThemeComboBox" Width="150" Margin="10" SelectionChanged="ThemeComboBox_SelectionChanged"
                       Foreground="{DynamicResource MaterialDesignBody}">
-                <ComboBoxItem Content="{DynamicResource ThemeFirst}" Tag="LightPurpleLime" />
-                <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkPurpleAmber" IsSelected="True"/>
+                <ComboBoxItem Content="{DynamicResource ThemeFirst}" Tag="LightPurpleLime"/>
+                <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkPurpleAmber"/>
                 <ComboBoxItem Content="{DynamicResource ThemeThird}" Tag="DarkGreenPink"/>
             </ComboBox>
 
-            <ComboBox Width="150" SelectionChanged="Language_SelectionChanged" Margin="10">
-                <ComboBoxItem Tag="sr" IsSelected="True">
+            <ComboBox x:Name="LanguageComboBox" Width="150" SelectionChanged="Language_SelectionChanged" Margin="10">
+                <ComboBoxItem Tag="sr">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Flags/sr.png" Width="20" Height="15" Margin="0,0,5,0"/>
                         <TextBlock Text="Srpski"

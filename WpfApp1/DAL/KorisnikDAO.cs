@@ -22,7 +22,9 @@ namespace ProdavnicaApp.DAL
                     Email = reader["Email"].ToString(),
                     Lozinka = reader["Lozinka"].ToString(),
                     DatumRegistracije = reader.GetDateTime("DatumRegistracije"),
-                    UlogaId = reader.GetInt32("UlogaId")
+                    UlogaId = reader.GetInt32("UlogaId"),
+                    Jezik = reader["Jezik"]?.ToString(),
+                    Tema = reader["Tema"]?.ToString()
                 };
 
                 korisnik.Uloga = UlogaDAO.GetById(korisnik.UlogaId);
@@ -81,6 +83,18 @@ namespace ProdavnicaApp.DAL
             cmd.ExecuteNonQuery();
         }
 
+        public static void UpdateSettings(int korisnikId, string jezik, string tema)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
 
+            var cmd = new MySqlCommand("UPDATE korisnik SET Jezik = @jezik, Tema = @tema WHERE Id = @id", conn);
+
+            cmd.Parameters.AddWithValue("@jezik", jezik);
+            cmd.Parameters.AddWithValue("@tema", tema);
+            cmd.Parameters.AddWithValue("@id", korisnikId);
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }

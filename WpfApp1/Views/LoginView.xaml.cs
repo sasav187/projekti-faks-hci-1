@@ -21,6 +21,9 @@ namespace ProdavnicaApp
 
             if (korisnik != null)
             {
+                ApplyLanguage(korisnik.Jezik);
+                ApplyTheme(korisnik.Tema);
+
                 switch (korisnik.UlogaId)
                 { 
                     case 1:
@@ -29,7 +32,7 @@ namespace ProdavnicaApp
                         this.Close();
                         break;
                     case 2:
-                        AdminView adminView = new AdminView();
+                        AdminView adminView = new AdminView(korisnik);
                         adminView.Show();
                         this.Close();
                         break;
@@ -43,6 +46,26 @@ namespace ProdavnicaApp
             {
                 MessageBox.Show("Neispravni podaci.", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void ApplyLanguage(string lang)
+        {
+            string path = $"/Resources/StringResources.{lang}.xaml";
+            var newLangDict = new ResourceDictionary { Source = new Uri(path, UriKind.Relative) };
+
+            var existingLangDict = Application.Current.Resources.MergedDictionaries
+                .FirstOrDefault(d => d.Source != null && d.Source.OriginalString.Contains("StringResources."));
+
+            if (existingLangDict != null)
+                Application.Current.Resources.MergedDictionaries.Remove(existingLangDict);
+
+            Application.Current.Resources.MergedDictionaries.Add(newLangDict);
+            this.Title = TryFindResource("TitleLogin")?.ToString();
+        }
+
+        private void ApplyTheme(string themeKey)
+        {
+            App.ApplyMaterialTheme(themeKey);
         }
 
         private void Language_SelectionChanged(object sender, SelectionChangedEventArgs e)

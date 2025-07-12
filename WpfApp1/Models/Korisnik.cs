@@ -6,9 +6,11 @@
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Email { get; set; }
-        public string Lozinka { get; set; } // Consider hashing this in production
+        public string Lozinka { get; set; } 
         public DateTime DatumRegistracije { get; set; }
-        public int UlogaId { get; set; } // Nullable in case of no associated role
-        public Uloga Uloga { get; set; } // Navigation property for role
+        public int UlogaId { get; set; } 
+        public Uloga Uloga { get; set; }
+        public string Jezik { get; set; }
+        public string Tema { get; set; }
     }
 }

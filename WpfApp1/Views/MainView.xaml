@@ -18,7 +18,7 @@
                 <ComboBoxItem Content="{DynamicResource ThemeThird}" Tag="DarkGreenPink"/>
             </ComboBox>
 
-            <ComboBox Width="150" SelectionChanged="Language_SelectionChanged" Margin="10">
+            <ComboBox x:Name="LanguageComboBox" Width="150" SelectionChanged="Language_SelectionChanged" Margin="10">
                 <ComboBoxItem Tag="sr" IsSelected="True">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Flags/sr.png" Width="20" Height="15" Margin="0,0,5,0"/>

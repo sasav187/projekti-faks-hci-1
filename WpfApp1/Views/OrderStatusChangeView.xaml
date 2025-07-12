@@ -7,8 +7,10 @@
         Foreground="{DynamicResource MaterialDesignBodyLight}">
 
     <StackPanel Margin="20">
-        <TextBlock Text="{DynamicResource NewStatus}" Margin="0,0,0,10"/>
-        <ComboBox x:Name="StatusComboBox" Margin="0,0,0,20">
+        <TextBlock Text="{DynamicResource NewStatus}" Margin="0,0,0,10"
+                   Foreground="{DynamicResource MaterialDesignBody}"/>
+        <ComboBox x:Name="StatusComboBox" Margin="0,0,0,20"
+                  Foreground="{DynamicResource MaterialDesignBody}">
             <ComboBoxItem Content="{DynamicResource InProcess}" Tag="U obradi"/>
             <ComboBoxItem Content="{DynamicResource Sent}" Tag="Poslato"/>
             <ComboBoxItem Content="{DynamicResource Finished}" Tag="Zavrseno"/>

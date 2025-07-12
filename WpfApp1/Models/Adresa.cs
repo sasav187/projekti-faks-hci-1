@@ -3,7 +3,7 @@
     public class Adresa
     {
         public int Id { get; set; }
-        public int? KorisnikId { get; set; } // Nullable in case of no associated user
+        public int? KorisnikId { get; set; } 
         public string Ulica { get; set; }
         public string Grad { get; set; }
         public string PostanskiBroj { get; set; }
