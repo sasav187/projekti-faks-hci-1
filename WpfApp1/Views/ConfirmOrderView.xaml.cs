@@ -16,7 +16,7 @@ namespace ProdavnicaApp.Views
             InitializeComponent();
             _stavke = stavke;
             LoadStavke();
-            UkupnoTextBlock.Text = $"{Math.Round(ukupno, 2)} KM";
+            UkupnoTextBlock.Text = $"{TryFindResource("Lbl_Total") ?? "Ukupno:"} {Math.Round(ukupno, 2)} KM";
         }
 
         private void LoadStavke()
@@ -26,12 +26,14 @@ namespace ProdavnicaApp.Views
                 Proizvod proizvod = ProizvodDAO.GetById(stavka.ProizvodId);
                 if (proizvod != null)
                 {
-                    string red = $"{proizvod.Naziv} - {stavka.Kolicina} x {stavka.Cijena} KM = {Math.Round(stavka.Kolicina * stavka.Cijena, 2)} KM";
+                    string red = $"{proizvod.Naziv} - {stavka.Kolicina} x {stavka.Cijena} KM = " +
+                                 $"{Math.Round(stavka.Kolicina * stavka.Cijena, 2)} KM";
                     StavkeListBox.Items.Add(red);
                 }
                 else
                 {
-                    StavkeListBox.Items.Add($"Nepoznat proizvod ID: {stavka.ProizvodId}");
+                    string poruka = TryFindResource("Msg_UnknownProduct")?.ToString() ?? "Nepoznat proizvod ID: ";
+                    StavkeListBox.Items.Add($"{poruka}{stavka.ProizvodId}");
                 }
             }
         }

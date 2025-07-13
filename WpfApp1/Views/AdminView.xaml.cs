@@ -96,13 +96,15 @@ namespace ProdavnicaApp
             if (!string.IsNullOrEmpty(naziv))
             {
                 KategorijaDAO.Insert(new Kategorija { Naziv = naziv });
-                MessageBox.Show("Kategorija je uspješno dodana.");
+                MessageBox.Show(
+                    TryFindResource("Msg_CategoryAdded")?.ToString() ?? "Kategorija je uspješno dodana.");
                 KategorijaNazivTextBox.Clear();
                 LoadKategorije();
             }
             else
             {
-                MessageBox.Show("Unesite naziv kategorije.");
+                MessageBox.Show(
+                    TryFindResource("Msg_CategoryNameRequired")?.ToString() ?? "Unesite naziv kategorije.");
             }
         }
 
@@ -110,14 +112,16 @@ namespace ProdavnicaApp
         {
             if (KategorijeComboBox.SelectedItem is not Kategorija odabranaKategorija)
             {
-                MessageBox.Show("Odaberite kategoriju.");
+                MessageBox.Show(
+                    TryFindResource("Msg_SelectCategory")?.ToString() ?? "Odaberite kategoriju.");
                 return;
             }
 
             if (!decimal.TryParse(ProizvodCijenaTextBox.Text, out decimal cijena) ||
                 !int.TryParse(ProizvodNaStanjuTextBox.Text, out int naStanju))
             {
-                MessageBox.Show("Unesite ispravne vrijednosti za cijenu i količinu.");
+                MessageBox.Show(
+                    TryFindResource("Msg_InvalidPriceOrStock")?.ToString() ?? "Unesite ispravne vrijednosti za cijenu i količinu.");
                 return;
             }
 
@@ -132,12 +136,14 @@ namespace ProdavnicaApp
 
             if (string.IsNullOrEmpty(proizvod.Naziv))
             {
-                MessageBox.Show("Unesite naziv proizvoda.");
+                MessageBox.Show(
+                    TryFindResource("Msg_ProductNameRequired")?.ToString() ?? "Unesite naziv proizvoda.");
                 return;
             }
 
             ProizvodDAO.Insert(proizvod);
-            MessageBox.Show("Proizvod je uspješno dodan.");
+            MessageBox.Show(
+                TryFindResource("Msg_ProductAdded")?.ToString() ?? "Proizvod je uspješno dodan.");
 
             ProizvodNazivTextBox.Clear();
             ProizvodOpisTextBox.Clear();
@@ -151,13 +157,19 @@ namespace ProdavnicaApp
             string kod = KuponKodTextBox.Text.Trim();
             if (!decimal.TryParse(KuponPopustTextBox.Text, out decimal popust) || popust < 0 || popust > 100)
             {
-                MessageBox.Show("Popust mora biti broj između 0 i 100.", "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(
+                    TryFindResource("Msg_InvalidDiscount")?.ToString() ?? "Popust mora biti broj između 0 i 100.",
+                    TryFindResource("Title_Error")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             if (KuponVaziDoPicker.SelectedDate == null)
             {
-                MessageBox.Show("Odaberite datum do kada važi kupon.", "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(
+                    TryFindResource("Msg_SelectCouponDate")?.ToString() ?? "Odaberite datum do kada važi kupon.",
+                    TryFindResource("Title_Error")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -171,14 +183,20 @@ namespace ProdavnicaApp
             try
             {
                 KuponDAO.Insert(kupon);
-                MessageBox.Show("Kupon uspješno dodat.", "Informacija", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(
+                    TryFindResource("Msg_CouponAdded")?.ToString() ?? "Kupon uspješno dodat.",
+                    TryFindResource("Title_Info")?.ToString() ?? "Informacija",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
                 KuponKodTextBox.Clear();
                 KuponPopustTextBox.Clear();
                 KuponVaziDoPicker.SelectedDate = null;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška prilikom dodavanja kupona: {ex.Message}", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(
+                    (TryFindResource("Msg_CouponError")?.ToString() ?? "Greška prilikom dodavanja kupona: ") + ex.Message,
+                    TryFindResource("Title_Error")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

@@ -95,7 +95,12 @@ namespace ProdavnicaApp
 
                 if (proizvodi.Count == 0)
                 {
-                    MessageBox.Show("Nema proizvoda u odabranoj kategoriji.", "Obavještenje", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(
+                        TryFindResource("Msg_NoProductsInCategory")?.ToString() ?? "Nema proizvoda u odabranoj kategoriji.",
+                        TryFindResource("Info")?.ToString() ?? "Obavještenje",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information
+   );
                 }
             }
         }
@@ -106,19 +111,19 @@ namespace ProdavnicaApp
 
             if (ProizvodiListBox.SelectedItem is not Proizvod proizvod)
             {
-                StatusTextBlock.Text = "Molimo odaberite proizvod.";
+                StatusTextBlock.Text = TryFindResource("Msg_SelectProduct")?.ToString() ?? "Molimo odaberite proizvod.";
                 return;
             }
 
             if (!int.TryParse(KolicinaTextBox.Text, out int kolicina) || kolicina <= 0)
             {
-                StatusTextBlock.Text = "Unesite validnu količinu.";
+                StatusTextBlock.Text = TryFindResource("Msg_EnterQuantity")?.ToString() ?? "Unesite validnu količinu.";
                 return;
             }
 
             if (kolicina > proizvod.NaStanju)
             {
-                StatusTextBlock.Text = "Nema dovoljno proizvoda na stanju.";
+                StatusTextBlock.Text = TryFindResource("Msg_NotEnoughStock")?.ToString() ?? "Nema dovoljno proizvoda na stanju.";
                 return;
             }
 
@@ -140,7 +145,7 @@ namespace ProdavnicaApp
             }
 
             StatusTextBlock.Foreground = System.Windows.Media.Brushes.Green;
-            StatusTextBlock.Text = "Proizvod dodat u korpu.";
+            StatusTextBlock.Text = TryFindResource("Msg_AddedToCart")?.ToString() ?? "Proizvod dodat u korpu.";
             KolicinaTextBox.Clear();
         }
 
@@ -148,7 +153,7 @@ namespace ProdavnicaApp
         {
             if (!_stavkeNarudzbe.Any())
             {
-                StatusTextBlock.Text = "Korpa je prazna.";
+                StatusTextBlock.Text = TryFindResource("Msg_EmptyCart")?.ToString() ?? "Korpa je prazna.";
                 return;
             }
 
@@ -161,12 +166,12 @@ namespace ProdavnicaApp
                 var kupon = KuponDAO.GetByKod(kodKupona);
                 if (kupon == null)
                 {
-                    StatusTextBlock.Text = "Kupon ne postoji.";
+                    StatusTextBlock.Text = TryFindResource("Msg_CouponNotExist")?.ToString() ?? "Kupon ne postoji.";
                     return;
                 }
                 if (kupon.VaziDo < DateTime.Today)
                 {
-                    StatusTextBlock.Text = "Kupon je istekao.";
+                    StatusTextBlock.Text = TryFindResource("Msg_CouponExpired")?.ToString() ?? "Kupon je istekao.";
                     return;
                 }
 
@@ -179,7 +184,7 @@ namespace ProdavnicaApp
 
             if (!confirmView.PotvrdaNarudzbe)
             {
-                StatusTextBlock.Text = "Narudžba otkazana.";
+                StatusTextBlock.Text = TryFindResource("Msg_OrderCancelled")?.ToString() ?? "Narudžba otkazana.";
                 return;
             }
 
@@ -188,7 +193,7 @@ namespace ProdavnicaApp
 
             if (addressView.UnesenaAdresa == null)
             {
-                StatusTextBlock.Text = "Niste unijeli adresu.";
+                StatusTextBlock.Text = TryFindResource("Msg_NoAddress")?.ToString() ?? "Niste unijeli adresu.";
                 return;
             }
 
@@ -220,7 +225,7 @@ namespace ProdavnicaApp
                 paymentView.ShowDialog();
 
                 StatusTextBlock.Foreground = System.Windows.Media.Brushes.Green;
-                StatusTextBlock.Text = "Narudžba uspješno kreirana.";
+                StatusTextBlock.Text = TryFindResource("Msg_OrderSuccess")?.ToString() ?? "Narudžba uspješno kreirana.";
                 _stavkeNarudzbe.Clear();
                 ProizvodiListBox.Items.Refresh();
             }

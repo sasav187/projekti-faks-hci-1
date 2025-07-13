@@ -20,7 +20,7 @@ namespace ProdavnicaApp.Views
         {
             if (StatusComboBox.SelectedItem is ComboBoxItem item)
             {
-                string noviStatus = item.Content.ToString();
+                string noviStatus = (StatusComboBox.SelectedItem as ComboBoxItem)?.Tag?.ToString();
                 string stariStatus = _narudzba.Status;
 
                 try
@@ -34,18 +34,21 @@ namespace ProdavnicaApp.Views
                         DatumPromjeneStatusa = DateTime.Now
                     });
 
-                    MessageBox.Show("Status uspješno ažuriran.");
+                    MessageBox.Show(
+                        TryFindResource("Msg_StatusUpdated")?.ToString() ?? "Status uspješno ažuriran.");
                     StatusPromijenjen = true;
                     this.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Greška: " + ex.Message);
+                    string greskaPrefix = TryFindResource("Msg_Error")?.ToString() ?? "Greška";
+                    MessageBox.Show($"{greskaPrefix}: {ex.Message}", greskaPrefix, MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Odaberite status.");
+                MessageBox.Show(
+                    TryFindResource("Msg_SelectStatus")?.ToString() ?? "Odaberite status.");
             }
         }
     }

@@ -37,14 +37,22 @@ namespace ProdavnicaApp
                         this.Close();
                         break;
                     default:
-                        MessageBox.Show("Nepoznata uloga korisnika.", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(
+                            TryFindResource("UnknownRoleMessage")?.ToString() ?? "Nepoznata uloga korisnika.",
+                            TryFindResource("UnknownRoleTitle")?.ToString() ?? "Greška",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
                         this.Close();
                         return;
                 }
             }
             else
             {
-                MessageBox.Show("Neispravni podaci.", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(
+                    TryFindResource("LoginErrorMessage")?.ToString() ?? "Neispravni podaci.",
+                    TryFindResource("LoginErrorTitle")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
 

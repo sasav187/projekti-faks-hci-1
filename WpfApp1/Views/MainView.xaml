@@ -119,11 +119,16 @@
                                   SelectionChanged="NarudzbeDataGrid_SelectionChanged"
                                   Foreground="{DynamicResource MaterialDesignBody}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="{DynamicResource OrderId}" Binding="{Binding Id}" Width="Auto"/>
-                                <DataGridTextColumn Header="{DynamicResource AddressId}" Binding="{Binding AdresaId}" Width="Auto"/>
-                                <DataGridTextColumn Header="{DynamicResource OrderDate}" Binding="{Binding DatumNarudzbe}" Width="*"/>
-                                <DataGridTextColumn Header="{DynamicResource Total}" Binding="{Binding UkupnaCijena}" Width="*"/>
-                                <DataGridTextColumn Header="{DynamicResource Status}" Binding="{Binding Status}" Width="*"/>
+                                <DataGridTextColumn Header="{DynamicResource OrderId}" Binding="{Binding Id}" 
+                                                    Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource AddressId}" Binding="{Binding AdresaId}" 
+                                                    Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource OrderDate}" Binding="{Binding DatumNarudzbe}" 
+                                                    Width="*"/>
+                                <DataGridTextColumn Header="{DynamicResource Total}" Binding="{Binding UkupnaCijena}" 
+                                                    Width="*"/>
+                                <DataGridTextColumn Header="{DynamicResource Status}" Binding="{Binding Status}" 
+                                                    Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

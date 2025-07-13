@@ -31,7 +31,11 @@ namespace ProdavnicaApp.Views
                 string.IsNullOrWhiteSpace(Drzava) ||
                 string.IsNullOrWhiteSpace(Tip))
             {
-                MessageBox.Show("Sva polja su obavezna.", "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(
+                    TryFindResource("AddressFieldRequiredMessage")?.ToString() ?? "Sva polja su obavezna.",
+                    TryFindResource("AddressFieldRequiredTitle")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
 
@@ -48,19 +52,23 @@ namespace ProdavnicaApp.Views
             try
             {
                 AdresaDAO.Insert(adresa);
-                adresa.Id = AdresaDAO.GetLastInsertedId(); // Get the last inserted ID
+                adresa.Id = AdresaDAO.GetLastInsertedId(); 
                 UnesenaAdresa = adresa;
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greška prilikom unosa adrese: " + ex.Message);
+                MessageBox.Show(
+                    (TryFindResource("AddressInsertErrorMessage")?.ToString() ?? "Greška prilikom unosa adrese: ") + ex.Message,
+                    TryFindResource("AddressInsertErrorTitle")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error); MessageBox.Show("Greška prilikom unosa adrese: " + ex.Message);
             }
         }
 
         private void BackToOrder_Click(object sender, RoutedEventArgs e)
         {
-            UnesenaAdresa = null; // Clear the address if going back
+            UnesenaAdresa = null; 
             this.Close();
         }
     }

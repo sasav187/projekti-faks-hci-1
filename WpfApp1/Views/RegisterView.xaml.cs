@@ -29,13 +29,21 @@ namespace ProdavnicaApp.Views
                 string.IsNullOrWhiteSpace(Lozinka) ||
                 string.IsNullOrWhiteSpace(Potvrda))
             {
-                MessageBox.Show("Sva polja su obavezna.", "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(
+                    TryFindResource("AllFieldsRequired")?.ToString() ?? "Sva polja su obavezna.",
+                    TryFindResource("Error")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
 
             if (Lozinka != Potvrda)
             {
-                MessageBox.Show("Lozinke se ne podudaraju.", "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(
+                    TryFindResource("PasswordsDontMatch")?.ToString() ?? "Lozinke se ne podudaraju.",
+                    TryFindResource("Error")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
 
@@ -52,14 +60,22 @@ namespace ProdavnicaApp.Views
             try
             {
                 KorisnikDAO.Insert(korisnik);
-                MessageBox.Show("Registracija uspješna!");
+                MessageBox.Show(
+                    TryFindResource("RegistrationSuccess")?.ToString() ?? "Registracija uspješna!",
+                    TryFindResource("Info")?.ToString() ?? "Informacija",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
                 var login = new LoginView();
                 login.Show();
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greška prilikom registracije: " + ex.Message);
+                MessageBox.Show(
+                    (TryFindResource("RegistrationError")?.ToString() ?? "Greška prilikom registracije: ") + ex.Message,
+                    TryFindResource("Error")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
 

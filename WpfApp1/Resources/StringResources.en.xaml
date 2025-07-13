@@ -92,4 +92,57 @@
     <sys:String x:Key="Action">Action</sys:String>
     <sys:String x:Key="Change">Change</sys:String>
 
+    <sys:String x:Key="LoginErrorTitle">Error</sys:String>
+    <sys:String x:Key="LoginErrorMessage">Invalid credentials.</sys:String>
+    <sys:String x:Key="UnknownRoleTitle">Error</sys:String>
+    <sys:String x:Key="UnknownRoleMessage">Unknown user role.</sys:String>
+
+    <sys:String x:Key="AddressFieldRequiredMessage">All fields are required.</sys:String>
+    <sys:String x:Key="AddressFieldRequiredTitle">Error</sys:String>
+    <sys:String x:Key="AddressInsertErrorMessage">Error while adding address:</sys:String>
+    <sys:String x:Key="AddressInsertErrorTitle">Error</sys:String>
+
+    <sys:String x:Key="Msg_CategoryAdded">Category successfully added.</sys:String>
+    <sys:String x:Key="Msg_CategoryNameRequired">Please enter category name.</sys:String>
+
+    <sys:String x:Key="Msg_SelectCategory">Please select a category.</sys:String>
+    <sys:String x:Key="Msg_InvalidPriceOrStock">Enter valid price and quantity.</sys:String>
+    <sys:String x:Key="Msg_ProductNameRequired">Enter product name.</sys:String>
+    <sys:String x:Key="Msg_ProductAdded">Product successfully added.</sys:String>
+
+    <sys:String x:Key="Msg_InvalidDiscount">Discount must be between 0 and 100.</sys:String>
+    <sys:String x:Key="Msg_SelectCouponDate">Select the date until the coupon is valid.</sys:String>
+    <sys:String x:Key="Msg_CouponAdded">Coupon successfully added.</sys:String>
+    <sys:String x:Key="Msg_CouponError">Error while adding coupon:</sys:String>
+
+    <sys:String x:Key="Title_Error">Error</sys:String>
+    <sys:String x:Key="Title_Info">Info</sys:String>
+
+    <sys:String x:Key="Msg_UnknownProduct">Unknown product ID:</sys:String>
+    <sys:String x:Key="Lbl_Total">Total:</sys:String>
+
+    <sys:String x:Key="Msg_SelectProduct">Please select a product.</sys:String>
+    <sys:String x:Key="Msg_EnterQuantity">Enter a valid quantity.</sys:String>
+    <sys:String x:Key="Msg_NotEnoughStock">Not enough products in stock.</sys:String>
+    <sys:String x:Key="Msg_AddedToCart">Product added to cart.</sys:String>
+    <sys:String x:Key="Msg_EmptyCart">Cart is empty.</sys:String>
+    <sys:String x:Key="Msg_CouponNotExist">Coupon does not exist.</sys:String>
+    <sys:String x:Key="Msg_CouponExpired">Coupon has expired.</sys:String>
+    <sys:String x:Key="Msg_OrderCancelled">Order cancelled.</sys:String>
+    <sys:String x:Key="Msg_NoAddress">Address not entered.</sys:String>
+    <sys:String x:Key="Msg_OrderSuccess">Order successfully created.</sys:String>
+    <sys:String x:Key="Msg_NoProductsInCategory">No products in the selected category.</sys:String>
+
+    <sys:String x:Key="Msg_StatusUpdated">Status successfully updated.</sys:String>
+    <sys:String x:Key="Msg_SelectStatus">Please select a status.</sys:String>
+    <sys:String x:Key="Msg_Error">Error</sys:String>
+
+    <sys:String x:Key="AllFieldsRequired">All fields are required.</sys:String>
+    <sys:String x:Key="PasswordsDontMatch">Passwords do not match.</sys:String>
+    <sys:String x:Key="RegistrationSuccess">Registration successful!</sys:String>
+    <sys:String x:Key="RegistrationError">Error during registration:</sys:String>
+
+    <sys:String x:Key="Error">Error</sys:String>
+    <sys:String x:Key="Info">Information</sys:String>
+
 </ResourceDictionary>

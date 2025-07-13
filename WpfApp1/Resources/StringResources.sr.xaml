@@ -92,4 +92,58 @@
     <sys:String x:Key="Action">Akcija</sys:String>
     <sys:String x:Key="Change">Promijeni</sys:String>
 
+    <sys:String x:Key="LoginErrorTitle">Greška</sys:String>
+    <sys:String x:Key="LoginErrorMessage">Neispravni podaci.</sys:String>
+    <sys:String x:Key="UnknownRoleTitle">Greška</sys:String>
+    <sys:String x:Key="UnknownRoleMessage">Nepoznata uloga korisnika.</sys:String>
+
+    <sys:String x:Key="AddressFieldRequiredMessage">Sva polja su obavezna.</sys:String>
+    <sys:String x:Key="AddressFieldRequiredTitle">Greška</sys:String>
+    <sys:String x:Key="AddressInsertErrorMessage">Greška prilikom unosa adrese:</sys:String>
+    <sys:String x:Key="AddressInsertErrorTitle">Greška</sys:String>
+
+    <sys:String x:Key="Msg_CategoryAdded">Kategorija je uspješno dodana.</sys:String>
+    <sys:String x:Key="Msg_CategoryNameRequired">Unesite naziv kategorije.</sys:String>
+
+    <sys:String x:Key="Msg_SelectCategory">Odaberite kategoriju.</sys:String>
+    <sys:String x:Key="Msg_InvalidPriceOrStock">Unesite ispravne vrijednosti za cijenu i količinu.</sys:String>
+    <sys:String x:Key="Msg_ProductNameRequired">Unesite naziv proizvoda.</sys:String>
+    <sys:String x:Key="Msg_ProductAdded">Proizvod je uspješno dodan.</sys:String>
+
+    <sys:String x:Key="Msg_InvalidDiscount">Popust mora biti broj između 0 i 100.</sys:String>
+    <sys:String x:Key="Msg_SelectCouponDate">Odaberite datum do kada važi kupon.</sys:String>
+    <sys:String x:Key="Msg_CouponAdded">Kupon uspješno dodat.</sys:String>
+    <sys:String x:Key="Msg_CouponError">Greška prilikom dodavanja kupona:</sys:String>
+
+    <sys:String x:Key="Title_Error">Greška</sys:String>
+    <sys:String x:Key="Title_Info">Informacija</sys:String>
+
+    <sys:String x:Key="Msg_UnknownProduct">Nepoznat proizvod ID:</sys:String>
+    <sys:String x:Key="Lbl_Total">Ukupno:</sys:String>
+
+    <sys:String x:Key="Msg_SelectProduct">Molimo odaberite proizvod.</sys:String>
+    <sys:String x:Key="Msg_EnterQuantity">Unesite validnu količinu.</sys:String>
+    <sys:String x:Key="Msg_NotEnoughStock">Nema dovoljno proizvoda na stanju.</sys:String>
+    <sys:String x:Key="Msg_AddedToCart">Proizvod dodat u korpu.</sys:String>
+    <sys:String x:Key="Msg_EmptyCart">Korpa je prazna.</sys:String>
+    <sys:String x:Key="Msg_CouponNotExist">Kupon ne postoji.</sys:String>
+    <sys:String x:Key="Msg_CouponExpired">Kupon je istekao.</sys:String>
+    <sys:String x:Key="Msg_OrderCancelled">Narudžba otkazana.</sys:String>
+    <sys:String x:Key="Msg_NoAddress">Niste unijeli adresu.</sys:String>
+    <sys:String x:Key="Msg_OrderSuccess">Narudžba uspješno kreirana.</sys:String>
+    <sys:String x:Key="Msg_NoProductsInCategory">Nema proizvoda u odabranoj kategoriji.</sys:String>
+
+    <sys:String x:Key="Msg_StatusUpdated">Status uspješno ažuriran.</sys:String>
+    <sys:String x:Key="Msg_SelectStatus">Odaberite status.</sys:String>
+    <sys:String x:Key="Msg_Error">Greška</sys:String>
+
+    <sys:String x:Key="AllFieldsRequired">Sva polja su obavezna.</sys:String>
+    <sys:String x:Key="PasswordsDontMatch">Lozinke se ne podudaraju.</sys:String>
+    <sys:String x:Key="RegistrationSuccess">Registracija uspješna!</sys:String>
+    <sys:String x:Key="RegistrationError">Greška prilikom registracije:</sys:String>
+
+    <sys:String x:Key="Error">Greška</sys:String>
+    <sys:String x:Key="Info">Informacija</sys:String>
+
+
 </ResourceDictionary>
