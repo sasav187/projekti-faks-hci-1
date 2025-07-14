@@ -67,6 +67,8 @@ namespace ProdavnicaApp
 
             Application.Current.Resources.MergedDictionaries.Add(newLangDict);
             this.Title = TryFindResource("TitleMain")?.ToString();
+
+            RefreshDataGridHeaders();
         }
 
         private void ApplyTheme(string themeKey)
@@ -272,6 +274,7 @@ namespace ProdavnicaApp
                     _korisnik.Jezik = lang;
                     KorisnikDAO.UpdateSettings(_korisnik.Id, lang, _korisnik.Tema);
                 }
+
             }
         }
 
@@ -289,6 +292,19 @@ namespace ProdavnicaApp
                 }
             }
         }
+
+        private void RefreshDataGridHeaders()
+        {
+            if (NarudzbeDataGrid.Columns.Count >= 5)
+            {
+                NarudzbeDataGrid.Columns[0].Header = TryFindResource("OrderId")?.ToString();
+                NarudzbeDataGrid.Columns[1].Header = TryFindResource("AddressId")?.ToString();
+                NarudzbeDataGrid.Columns[2].Header = TryFindResource("OrderDate")?.ToString();
+                NarudzbeDataGrid.Columns[3].Header = TryFindResource("Total")?.ToString();
+                NarudzbeDataGrid.Columns[4].Header = TryFindResource("Status")?.ToString();
+            }
+        }
+
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
