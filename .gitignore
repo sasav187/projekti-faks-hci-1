@@ -364,4 +364,4 @@ FodyWeavers.xsd
 
 # SQL Database
 *.sql
-prodavnica_db_.txt
+prodavnica_db_schema.txt
