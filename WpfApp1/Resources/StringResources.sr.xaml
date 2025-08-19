@@ -148,4 +148,11 @@
     <sys:String x:Key="PaymentSuccess">Plaćanje uspješno!</sys:String>
     <sys:String x:Key="PaymentError">Greška prilikom plaćanja:</sys:String>
 
+    <sys:String x:Key="OrderTab">Napravi novu narudžbu</sys:String>
+    <sys:String x:Key="OrdersTab">Istorija narudžbi</sys:String>
+    <sys:String x:Key="Search">Traži</sys:String>
+    <sys:String x:Key="SearchProducts">Traži proizvode</sys:String>
+
+
+
 </ResourceDictionary>

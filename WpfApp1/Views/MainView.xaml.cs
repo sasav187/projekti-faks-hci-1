@@ -1,5 +1,8 @@
 ﻿using ProdavnicaApp.DAL;
 using ProdavnicaApp.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using ProdavnicaApp.Views;
@@ -11,6 +14,7 @@ namespace ProdavnicaApp
         private readonly Korisnik _korisnik;
         private List<Kategorija> _kategorije;
         private List<StavkaNarudzbe> _stavkeNarudzbe;
+        private List<Proizvod> _sviProizvodi; // Svi proizvodi u bazi
 
         public MainView(Korisnik korisnik)
         {
@@ -28,6 +32,10 @@ namespace ProdavnicaApp
 
             LoadKategorije();
             LoadNarudzbe(korisnik);
+
+            // Učitavanje svih proizvoda za globalnu pretragu
+            _sviProizvodi = ProizvodDAO.GetAll();
+            ProizvodiListBox.ItemsSource = _sviProizvodi;
         }
 
         private void SetSelectedLanguage(string lang)
@@ -92,19 +100,44 @@ namespace ProdavnicaApp
         {
             if (KategorijeComboBox.SelectedItem is Kategorija kategorija)
             {
-                var proizvodi = ProizvodDAO.GetByKategorijaId(kategorija.IdKategorije);
-                ProizvodiListBox.ItemsSource = proizvodi;
+                var proizvodiKategorije = ProizvodDAO.GetByKategorijaId(kategorija.IdKategorije);
 
-                if (proizvodi.Count == 0)
+                if (proizvodiKategorije.Count == 0)
                 {
                     MessageBox.Show(
                         TryFindResource("Msg_NoProductsInCategory")?.ToString() ?? "Nema proizvoda u odabranoj kategoriji.",
                         TryFindResource("Info")?.ToString() ?? "Obavještenje",
                         MessageBoxButton.OK,
                         MessageBoxImage.Information
-   );
+                    );
                 }
+
+                // Prikaz proizvoda izabrane kategorije (ne utiče na globalni search)
+                ProizvodiListBox.ItemsSource = proizvodiKategorije;
             }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string search = SearchTextBox.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(search))
+            {
+                ProizvodiListBox.ItemsSource = _sviProizvodi;
+            }
+            else
+            {
+                var filtrirani = _sviProizvodi
+                                 .Where(p => p.Naziv.ToLower().Contains(search) ||
+                                             p.Opis.ToLower().Contains(search))
+                                 .ToList();
+                ProizvodiListBox.ItemsSource = filtrirani;
+            }
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchTextBox_TextChanged(sender, null);
         }
 
         private void NaruciButton_Click(object sender, RoutedEventArgs e)
@@ -130,7 +163,7 @@ namespace ProdavnicaApp
             }
 
             decimal cijena = proizvod.Cijena;
-         
+
             var postojeca = _stavkeNarudzbe.FirstOrDefault(s => s.ProizvodId == proizvod.IdProizvoda);
             if (postojeca != null)
             {
@@ -182,7 +215,6 @@ namespace ProdavnicaApp
 
             var confirmView = new ConfirmOrderView(_stavkeNarudzbe, ukupnaCijena);
             confirmView.ShowDialog();
-
 
             if (!confirmView.PotvrdaNarudzbe)
             {
@@ -249,7 +281,6 @@ namespace ProdavnicaApp
             }
         }
 
-
         private void Language_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is ComboBox cb && cb.SelectedItem is ComboBoxItem selected)
@@ -274,7 +305,6 @@ namespace ProdavnicaApp
                     _korisnik.Jezik = lang;
                     KorisnikDAO.UpdateSettings(_korisnik.Id, lang, _korisnik.Tema);
                 }
-
             }
         }
 
@@ -304,7 +334,6 @@ namespace ProdavnicaApp
                 NarudzbeDataGrid.Columns[4].Header = TryFindResource("Status")?.ToString();
             }
         }
-
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
