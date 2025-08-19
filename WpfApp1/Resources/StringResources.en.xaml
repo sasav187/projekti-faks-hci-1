@@ -145,4 +145,7 @@
     <sys:String x:Key="Error">Error</sys:String>
     <sys:String x:Key="Info">Information</sys:String>
 
+    <sys:String x:Key="PaymentSuccess">Payment successful!</sys:String>
+    <sys:String x:Key="PaymentError">Error during payment:</sys:String>
+
 </ResourceDictionary>

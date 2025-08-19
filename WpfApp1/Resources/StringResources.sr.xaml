@@ -145,5 +145,7 @@
     <sys:String x:Key="Error">Greška</sys:String>
     <sys:String x:Key="Info">Informacija</sys:String>
 
+    <sys:String x:Key="PaymentSuccess">Plaćanje uspješno!</sys:String>
+    <sys:String x:Key="PaymentError">Greška prilikom plaćanja:</sys:String>
 
 </ResourceDictionary>

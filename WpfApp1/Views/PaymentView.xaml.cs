@@ -15,6 +15,7 @@ namespace ProdavnicaApp.Views
             InitializeComponent();
             _narudzbaId = narudzbaId;
             _ukupnaCijena = ukupnaCijena;
+            this.Title = TryFindResource("TitlePayment")?.ToString();
         }
 
         private void ProcessPayment(string nacin)
@@ -31,12 +32,20 @@ namespace ProdavnicaApp.Views
 
                 PlacanjeDAO.Insert(placanje);
 
-                MessageBox.Show("Uspješno izvršeno plaćanje!", "Uspjeh", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(
+                    TryFindResource("PaymentSuccess")?.ToString() ?? "Plaćanje uspješno!",
+                    TryFindResource("Info")?.ToString() ?? "Informacija",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Greška: " + ex.Message, "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(
+                    (TryFindResource("PaymentError")?.ToString() ?? "Greška prilikom plaćanja: ") + ex.Message,
+                    TryFindResource("Error")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
 
