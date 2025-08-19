@@ -1,0 +1,12 @@
+uloga
+korisnik
+adresa
+kategorija
+proizvod
+recenzija
+narudzba
+stavkanarudzbe
+kupon
+listazelja
+narudzbastatuslog
+placanje
