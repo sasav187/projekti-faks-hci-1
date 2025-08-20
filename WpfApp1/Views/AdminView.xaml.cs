@@ -299,6 +299,7 @@ namespace ProdavnicaApp
                 KuponKodTextBox.Clear();
                 KuponPopustTextBox.Clear();
                 KuponVaziDoPicker.SelectedDate = null;
+                LoadKuponi();
             }
             catch (Exception ex)
             {
