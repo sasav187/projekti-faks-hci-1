@@ -153,6 +153,16 @@
     <sys:String x:Key="Search">Traži</sys:String>
     <sys:String x:Key="SearchProducts">Traži proizvode</sys:String>
 
+    <sys:String x:Key="Categories">Kategorije</sys:String>
+    <sys:String x:Key="Products">Proizvodi</sys:String>
+    <sys:String x:Key="ProductsCategories">Proizvodi i kategorije</sys:String>
 
+    <sys:String x:Key="Add">Dodaj</sys:String>
+    <sys:String x:Key="Edit">Izmjeni</sys:String>
+    <sys:String x:Key="Delete">Obriši</sys:String>
+    
+    <sys:String x:Key="CodeCoupon">Kod kupona</sys:String>
+    <sys:String x:Key="DiscountCoupon">Popust kupona</sys:String>
+    <sys:String x:Key="ValidUntilCoupon">Kupon važi do</sys:String>
 
 </ResourceDictionary>

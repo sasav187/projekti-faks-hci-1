@@ -153,7 +153,16 @@
     <sys:String x:Key="Search">Search</sys:String>
     <sys:String x:Key="SearchProducts">Search products</sys:String>
 
+    <sys:String x:Key="Categories">Categories</sys:String>
+    <sys:String x:Key="Products">Products</sys:String>
+    <sys:String x:Key="ProductsCategories">Products and categories</sys:String>
 
+    <sys:String x:Key="Add">Add</sys:String>
+    <sys:String x:Key="Edit">Edit</sys:String>
+    <sys:String x:Key="Delete">Delete</sys:String>
 
+    <sys:String x:Key="CodeCoupon">Coupon code</sys:String>
+    <sys:String x:Key="DiscountCoupon">Coupon discount</sys:String>
+    <sys:String x:Key="ValidUntilCoupon">Coupon valid until</sys:String>
 
 </ResourceDictionary>

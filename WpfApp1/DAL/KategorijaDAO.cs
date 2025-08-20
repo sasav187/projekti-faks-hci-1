@@ -31,5 +31,24 @@ namespace ProdavnicaApp.DAL
             cmd.Parameters.AddWithValue("@naziv", kategorija.Naziv);
             cmd.ExecuteNonQuery();
         }
+
+        public static void Update(Kategorija kategorija)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("UPDATE kategorija SET Naziv = @naziv WHERE Id = @id", conn);
+            cmd.Parameters.AddWithValue("@naziv", kategorija.Naziv);
+            cmd.Parameters.AddWithValue("@id", kategorija.IdKategorije);
+            cmd.ExecuteNonQuery();
+        }
+
+        public static void Delete(int id)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("DELETE FROM kategorija WHERE Id = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+        }
     }
 }

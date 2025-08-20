@@ -9,157 +9,238 @@
         Background="{DynamicResource MaterialDesignPaper}"
         Foreground="{DynamicResource MaterialDesignBodyLight}">
 
-    <DockPanel Margin="20">
+    <DockPanel Margin="10">
 
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="0,0,0,20">
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right">
             <ComboBox x:Name="ThemeComboBox" Width="150" Margin="10" SelectionChanged="ThemeComboBox_SelectionChanged"
                       Foreground="{DynamicResource MaterialDesignBody}">
                 <ComboBoxItem Content="{DynamicResource ThemeFirst}" Tag="LightPurpleLime"/>
-                <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkPurpleAmber"/>
+                <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkPurpleAmber" IsSelected="True"/>
                 <ComboBoxItem Content="{DynamicResource ThemeThird}" Tag="DarkGreenPink"/>
             </ComboBox>
 
             <ComboBox x:Name="LanguageComboBox" Width="150" SelectionChanged="Language_SelectionChanged" Margin="10">
-                <ComboBoxItem Tag="sr">
+                <ComboBoxItem Tag="sr" IsSelected="True">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Flags/sr.png" Width="20" Height="15" Margin="0,0,5,0"/>
-                        <TextBlock Text="Srpski"
-                                   Foreground="{DynamicResource MaterialDesignBody}"/>
+                        <TextBlock Text="Srpski" Foreground="{DynamicResource MaterialDesignBody}"/>
                     </StackPanel>
                 </ComboBoxItem>
                 <ComboBoxItem Tag="en">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/Flags/en.png" Width="20" Height="15" Margin="0,0,5,0"/>
-                        <TextBlock Text="English"
-                                   Foreground="{DynamicResource MaterialDesignBody}"/>
+                        <TextBlock Text="English" Foreground="{DynamicResource MaterialDesignBody}"/>
                     </StackPanel>
                 </ComboBoxItem>
             </ComboBox>
+
+            <Button Content="{DynamicResource Logout}" Width="120" Height="40" Margin="20,0,0,0"
+                    Click="Logout_Click"
+                    Style="{StaticResource MaterialDesignFlatButton}"/>
         </StackPanel>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel>
+        <ToolBar Height="40" DockPanel.Dock="Top">
+            <TextBlock Text="{DynamicResource TitleAdmin}" FontSize="16" Margin="10,0"
+                       Foreground="{DynamicResource MaterialDesignBody}"/>
+        </ToolBar>
 
-                <materialDesign:Card Margin="0,0,0,20" Padding="20">
-                    <StackPanel>
-                        <TextBlock Text="{DynamicResource AddCategory}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
-                                   Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <TextBox x:Name="KategorijaNazivTextBox" Width="300" Margin="0,5"
-                                 materialDesign:HintAssist.Hint="{DynamicResource CategoryName}"
-                                 Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <Button Content="{DynamicResource AddCategory}" Width="150" Margin="0,10,0,0" 
-                                Click="DodajKategoriju_Click"/>
-                    </StackPanel>
-                </materialDesign:Card>
+        <TabControl>
 
-                <materialDesign:Card Margin="0,0,0,20" Padding="20">
-                    <StackPanel>
-                        <TextBlock Text="{DynamicResource AddProduct}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
-                                   Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <TextBox x:Name="ProizvodNazivTextBox" Width="300" Margin="0,5"
-                                 materialDesign:HintAssist.Hint="{DynamicResource ProductName}"
-                                 Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <TextBox x:Name="ProizvodOpisTextBox" Width="300" Margin="0,5"
-                                 materialDesign:HintAssist.Hint="{DynamicResource Description}"
-                                 Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <TextBox x:Name="ProizvodCijenaTextBox" Width="300" Margin="0,5"
-                                 materialDesign:HintAssist.Hint="{DynamicResource Price}"
-                                 Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <TextBox x:Name="ProizvodNaStanjuTextBox" Width="300" Margin="0,5"
-                                 materialDesign:HintAssist.Hint="{DynamicResource InStock}"
-                                 Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <ComboBox x:Name="KategorijeComboBox" Width="300" Margin="0,5"
-                                  DisplayMemberPath="Naziv"
-                                  materialDesign:HintAssist.Hint="{DynamicResource Category}"
-                                  Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <Button Content="{DynamicResource AddProduct}" Width="150" Margin="0,10,0,0" Click="DodajProizvod_Click"/>
-                    </StackPanel>
-                </materialDesign:Card>
+            <TabItem Header="{DynamicResource ProductsCategories}">
+                <Grid Margin="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
 
-                <materialDesign:Card Margin="0,0,0,20" Padding="20">
-                    <StackPanel>
-                        <TextBlock Text="{DynamicResource UsersTitle}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
+                    <StackPanel Grid.Column="0" Margin="10">
+                        <TextBlock Text="{DynamicResource Categories}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
                                    Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <ListBox x:Name="KorisniciListBox" Width="500" Height="200">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Margin="5">
-                                        <TextBlock Text="{Binding Id}" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding Ime}" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding Email}"/>
-                                        <TextBlock Text="{Binding DatumRegistracije, StringFormat='dd.MM.yyyy'}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </StackPanel>
-                </materialDesign:Card>
-
-                <materialDesign:Card Margin="0,0,0,20" Padding="20">
-                    <StackPanel>
-                        <TextBlock Text="{DynamicResource OrdersTitle}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
-                                   Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <DataGrid x:Name="NarudzbeDataGrid"
+                        <DataGrid x:Name="KategorijeDataGrid"
                                   AutoGenerateColumns="False"
                                   Height="300"
                                   CanUserAddRows="False"
                                   IsReadOnly="True"
+                                  SelectionMode="Single"
+                                  Margin="0,0,0,10"
                                   Foreground="{DynamicResource MaterialDesignBody}">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="{DynamicResource OrderId}" Binding="{Binding Id}" 
-                                                    Width="Auto"/>
-                                <DataGridTextColumn Header="{DynamicResource UserId}" Binding="{Binding KorisnikId}" 
-                                                    Width="Auto"/>
-                                <DataGridTextColumn Header="{DynamicResource AddressId}" Binding="{Binding AdresaId}" 
-                                                    Width="Auto"/>
-                                <DataGridTextColumn Header="{DynamicResource OrderDate}" Binding="{Binding DatumNarudzbe}" 
-                                                    Width="*"/>
-                                <DataGridTextColumn Header="{DynamicResource Total}" Binding="{Binding UkupnaCijena}" 
-                                                    Width="*"/>
-                                <DataGridTextColumn Header="{DynamicResource Status}" Binding="{Binding Status}" 
-                                                    Width="*"/>
-
-                                <DataGridTemplateColumn Header="{DynamicResource Action}">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button Content="{DynamicResource Change}" Click="PromijeniStatus_Click"
-                                                    Style="{StaticResource MaterialDesignFlatButton}"
-                                                    Foreground="{DynamicResource SecondaryHueMidBrush}" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="ID" Binding="{Binding IdKategorije}" Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource CategoryName}" 
+                                                    Binding="{Binding Naziv}" Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                    </StackPanel>
-                </materialDesign:Card>
 
-                <materialDesign:Card Margin="0,0,0,20" Padding="20">
-                    <StackPanel>
-                        <TextBlock Text="{DynamicResource AddCouponAdmin}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                            <TextBox x:Name="KategorijaNazivTextBox" Width="200" Margin="0,0,10,0"
+                                     materialDesign:HintAssist.Hint="{DynamicResource CategoryName}"
+                                     Foreground="{DynamicResource MaterialDesignBody}"/>
+                            <Button Content="{DynamicResource Add}" Width="80" Margin="0,0,10,0"
+                                    Click="DodajKategoriju_Click"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"/>
+                            <Button Content="{DynamicResource Edit}" Width="80" Margin="0,0,10,0"
+                                    Click="AzurirajKategoriju_Click"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"/>
+                            <Button Content="{DynamicResource Delete}" Width="80"
+                                    Click="ObrisiKategoriju_Click"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="10">
+                        <TextBlock Text="{DynamicResource Products}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
                                    Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <TextBox x:Name="KuponKodTextBox" Width="300" Margin="0,5"
-                                 materialDesign:HintAssist.Hint="{DynamicResource AddCouponCode}"
-                                 Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <TextBox x:Name="KuponPopustTextBox" Width="300" Margin="0,5"
-                                 materialDesign:HintAssist.Hint="{DynamicResource CouponDiscount}"
-                                 Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <DatePicker x:Name="KuponVaziDoPicker" Width="300" Margin="0,5"
-                                    materialDesign:HintAssist.Hint="{DynamicResource CouponValidUntil}"
-                                    Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <Button Content="{DynamicResource AddCouponAdmin}" Width="150" Margin="0,10,0,0" 
-                                Click="DodajKupon_Click"/>
+                        <DataGrid x:Name="ProizvodiDataGrid"
+                                  AutoGenerateColumns="False"
+                                  Height="300"
+                                  CanUserAddRows="False"
+                                  IsReadOnly="True"
+                                  SelectionMode="Single"
+                                  Margin="0,0,0,10"
+                                  Foreground="{DynamicResource MaterialDesignBody}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding IdProizvoda}" Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource ProductName}" 
+                                                    Binding="{Binding Naziv}" Width="*"/>
+                                <DataGridTextColumn Header="{DynamicResource Description}" 
+                                                    Binding="{Binding Opis}" Width="*"/>
+                                <DataGridTextColumn Header="{DynamicResource Price}" 
+                                                    Binding="{Binding Cijena}" Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource InStock}" 
+                                                    Binding="{Binding NaStanju}" Width="Auto"/>
+                                <DataGridTextColumn Header="{DynamicResource Category}" 
+                                                    Binding="{Binding KategorijaId}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                            <TextBox x:Name="ProizvodNazivTextBox" Width="150" Margin="0,0,10,0"
+                                     materialDesign:HintAssist.Hint="{DynamicResource ProductName}"
+                                     Foreground="{DynamicResource MaterialDesignBody}"/>
+                            <TextBox x:Name="ProizvodOpisTextBox" Width="150" Margin="0,0,10,0"
+                                     materialDesign:HintAssist.Hint="{DynamicResource Description}"
+                                     Foreground="{DynamicResource MaterialDesignBody}"/>
+                            <TextBox x:Name="ProizvodCijenaTextBox" Width="100" Margin="0,0,10,0"
+                                     materialDesign:HintAssist.Hint="{DynamicResource Price}"
+                                     Foreground="{DynamicResource MaterialDesignBody}"/>
+                            <TextBox x:Name="ProizvodNaStanjuTextBox" Width="100" Margin="0,0,10,0"
+                                     materialDesign:HintAssist.Hint="{DynamicResource InStock}"
+                                     Foreground="{DynamicResource MaterialDesignBody}"/>
+                            <ComboBox x:Name="KategorijeComboBox" Width="150" Margin="0,0,10,0"
+                                      DisplayMemberPath="Naziv"
+                                      materialDesign:HintAssist.Hint="{DynamicResource Category}"
+                                      Foreground="{DynamicResource MaterialDesignBody}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+                            <Button Content="{DynamicResource Add}" Width="80" Margin="0,0,10,0"
+                                    Click="DodajProizvod_Click"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"/>
+                            <Button Content="{DynamicResource Edit}" Width="80" Margin="0,0,10,0"
+                                    Click="AzurirajProizvod_Click"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"/>
+                            <Button Content="{DynamicResource Delete}" Width="80"
+                                    Click="ObrisiProizvod_Click"
+                                    Style="{StaticResource MaterialDesignRaisedButton}"/>
+                        </StackPanel>
                     </StackPanel>
-                </materialDesign:Card>
+                </Grid>
+            </TabItem>
 
-                <Button Content="{DynamicResource Logout}"
-                        Width="120"
-                        Height="40"
-                        HorizontalAlignment="Left"
-                        Margin="0,0,0,20"
-                        Click="Logout_Click"
-                        Style="{StaticResource MaterialDesignFlatButton}"/>
+            <TabItem Header="{DynamicResource UsersTitle}">
+                <Grid Margin="20">
+                    <DataGrid x:Name="KorisniciDataGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  HeadersVisibility="Column"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  RowHeaderWidth="0"
+                  Margin="0"
+                  VerticalScrollBarVisibility="Auto">
 
-            </StackPanel>
-        </ScrollViewer>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="*"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*"/>
+                            <DataGridTextColumn Header="Registracija" 
+                                    Binding="{Binding DatumRegistracije, StringFormat=\{0:dd.MM.yyyy\}}" 
+                                    Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem Header="{DynamicResource OrdersTitle}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <DataGrid x:Name="NarudzbeDataGrid"
+                              AutoGenerateColumns="False"
+                              Height="500" Margin="20"
+                              CanUserAddRows="False"
+                              IsReadOnly="True"
+                              Foreground="{DynamicResource MaterialDesignBody}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{DynamicResource OrderId}" 
+                                                Binding="{Binding Id}" Width="Auto"/>
+                            <DataGridTextColumn Header="{DynamicResource UserId}" 
+                                                Binding="{Binding KorisnikId}" Width="Auto"/>
+                            <DataGridTextColumn Header="{DynamicResource AddressId}" 
+                                                Binding="{Binding AdresaId}" Width="Auto"/>
+                            <DataGridTextColumn Header="{DynamicResource OrderDate}" 
+                                                Binding="{Binding DatumNarudzbe}" Width="*"/>
+                            <DataGridTextColumn Header="{DynamicResource Total}" 
+                                                Binding="{Binding UkupnaCijena}" Width="*"/>
+                            <DataGridTextColumn Header="{DynamicResource Status}" 
+                                                Binding="{Binding Status}" Width="*"/>
+                            <DataGridTemplateColumn Header="{DynamicResource Action}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{DynamicResource Change}" Click="PromijeniStatus_Click"
+                                                Style="{StaticResource MaterialDesignFlatButton}"
+                                                Foreground="{DynamicResource SecondaryHueMidBrush}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="{DynamicResource AddCouponAdmin}">
+                <StackPanel Margin="20">
+                    <TextBox x:Name="KuponKodTextBox" Width="300" Margin="0,5"
+                 materialDesign:HintAssist.Hint="{DynamicResource AddCouponCode}"
+                 Foreground="{DynamicResource MaterialDesignBody}"/>
+                    <TextBox x:Name="KuponPopustTextBox" Width="300" Margin="0,5"
+                 materialDesign:HintAssist.Hint="{DynamicResource CouponDiscount}"
+                 Foreground="{DynamicResource MaterialDesignBody}"/>
+                    <DatePicker x:Name="KuponVaziDoPicker" Width="300" Margin="0,5"
+                    materialDesign:HintAssist.Hint="{DynamicResource CouponValidUntil}"
+                    Foreground="{DynamicResource MaterialDesignBody}"/>
+                    <Button Content="{DynamicResource AddCouponAdmin}" Width="150" Margin="0,10,0,0"
+                Click="DodajKupon_Click"
+                Style="{StaticResource MaterialDesignRaisedButton}"/>
+
+                    <Separator Margin="0,20,0,10"/>
+
+                    <TextBlock Text="{DynamicResource CouponList}" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <DataGrid x:Name="KuponiDataGrid" 
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  Margin="0,5,0,0"
+                  Height="200">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{DynamicResource CodeCoupon}" Binding="{Binding Kod}" Width="*"/>
+                            <DataGridTextColumn Header="{DynamicResource DiscountCoupon}" Binding="{Binding Popust}" Width="*"/>
+                            <DataGridTextColumn Header="{DynamicResource ValidUntilCoupon}" Binding="{Binding VaziDo}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
     </DockPanel>
 </Window>

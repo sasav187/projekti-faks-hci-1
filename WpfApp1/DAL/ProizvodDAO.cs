@@ -104,5 +104,14 @@ namespace ProdavnicaApp.DAL
 
             cmd.ExecuteNonQuery();
         }
+
+        public static void Delete(int id)
+        {
+            using var conn = new MySqlConnection(Database.ConnectionString);
+            conn.Open();
+            var cmd = new MySqlCommand("DELETE FROM proizvod WHERE Id = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+        }
     }
 }
