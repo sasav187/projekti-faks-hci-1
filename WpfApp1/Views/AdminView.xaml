@@ -63,6 +63,7 @@
                                   IsReadOnly="True"
                                   SelectionMode="Single"
                                   Margin="0,0,0,10"
+                                  SelectionChanged="KategorijeDataGrid_SelectionChanged"
                                   Foreground="{DynamicResource MaterialDesignBody}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding IdKategorije}" Width="Auto"/>
@@ -100,6 +101,7 @@
                                   IsReadOnly="True"
                                   SelectionMode="Single"
                                   Margin="0,0,0,10"
+                                  SelectionChanged="ProizvodiDataGrid_SelectionChanged"
                                   Foreground="{DynamicResource MaterialDesignBody}">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" Binding="{Binding IdProizvoda}" Width="Auto"/>
@@ -131,6 +133,7 @@
                                      Foreground="{DynamicResource MaterialDesignBody}"/>
                             <ComboBox x:Name="KategorijeComboBox" Width="150" Margin="0,0,10,0"
                                       DisplayMemberPath="Naziv"
+                                      SelectedValuePath="IdKategorije"
                                       materialDesign:HintAssist.Hint="{DynamicResource Category}"
                                       Foreground="{DynamicResource MaterialDesignBody}"/>
                         </StackPanel>

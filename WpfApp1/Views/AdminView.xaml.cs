@@ -249,6 +249,27 @@ namespace ProdavnicaApp
             }
         }
 
+        private void ProizvodiDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ProizvodiDataGrid.SelectedItem is Proizvod odabraniProizvod)
+            {
+                ProizvodNazivTextBox.Text = odabraniProizvod.Naziv;
+                ProizvodOpisTextBox.Text = odabraniProizvod.Opis;
+                ProizvodCijenaTextBox.Text = odabraniProizvod.Cijena.ToString("F2");
+                ProizvodNaStanjuTextBox.Text = odabraniProizvod.NaStanju.ToString();
+
+                KategorijeComboBox.SelectedValue = odabraniProizvod.KategorijaId;
+            }
+        }
+
+        private void KategorijeDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (KategorijeDataGrid.SelectedItem is Kategorija odabranaKategorija)
+            {
+                KategorijaNazivTextBox.Text = odabranaKategorija.Naziv;
+            }
+        }
+
         private void ThemeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ThemeComboBox.SelectedItem is ComboBoxItem item)
