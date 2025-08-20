@@ -1,5 +1,6 @@
 ﻿using ProdavnicaApp.DAL;
 using ProdavnicaApp.Models;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace ProdavnicaApp.Views
@@ -31,6 +32,29 @@ namespace ProdavnicaApp.Views
             {
                 MessageBox.Show(
                     TryFindResource("AllFieldsRequired")?.ToString() ?? "Sva polja su obavezna.",
+                    TryFindResource("Error")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!IsValidEmail(Email))
+            {
+                MessageBox.Show(
+                    TryFindResource("InvalidEmail")?.ToString() ?? "Email nije validan.",
+                    TryFindResource("Error")?.ToString() ?? "Greška",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!IsValidPassword(Lozinka))
+            {
+                MessageBox.Show(
+                    TryFindResource("InvalidPassword")?.ToString() ??
+                    "Lozinka mora imati bar 8 karaktera, " +
+                    "jedno veliko slovo, jedno malo slovo, " +
+                    "jedan broj i jedan specijalni znak.",
                     TryFindResource("Error")?.ToString() ?? "Greška",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
@@ -84,6 +108,19 @@ namespace ProdavnicaApp.Views
             var login = new LoginView();
             login.Show();
             this.Close();
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            return Regex.IsMatch(email,
+                @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                RegexOptions.IgnoreCase);
+        }
+
+        private bool IsValidPassword(string password)
+        {
+            return Regex.IsMatch(password,
+                @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$");
         }
     }
 }

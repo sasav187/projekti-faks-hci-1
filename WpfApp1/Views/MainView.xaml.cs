@@ -14,7 +14,7 @@ namespace ProdavnicaApp
         private readonly Korisnik _korisnik;
         private List<Kategorija> _kategorije;
         private List<StavkaNarudzbe> _stavkeNarudzbe;
-        private List<Proizvod> _sviProizvodi; // Svi proizvodi u bazi
+        private List<Proizvod> _sviProizvodi; 
 
         public MainView(Korisnik korisnik)
         {
@@ -33,7 +33,7 @@ namespace ProdavnicaApp
             LoadKategorije();
             LoadNarudzbe(korisnik);
 
-            // Učitavanje svih proizvoda za globalnu pretragu
+            
             _sviProizvodi = ProizvodDAO.GetAll();
             ProizvodiListBox.ItemsSource = _sviProizvodi;
         }
@@ -112,7 +112,7 @@ namespace ProdavnicaApp
                     );
                 }
 
-                // Prikaz proizvoda izabrane kategorije (ne utiče na globalni search)
+                
                 ProizvodiListBox.ItemsSource = proizvodiKategorije;
             }
         }

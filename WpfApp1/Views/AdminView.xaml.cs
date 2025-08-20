@@ -68,6 +68,9 @@ namespace ProdavnicaApp
 
             Application.Current.Resources.MergedDictionaries.Add(newLangDict);
             this.Title = TryFindResource("TitleAdmin")?.ToString();
+
+            RefreshProizvodiDataGridHeaders();
+            RefreshKategorijeDataGridHeaders();
         }
 
         private void ApplyTheme(string themeKey)
@@ -308,6 +311,23 @@ namespace ProdavnicaApp
                     TryFindResource("Title_Error")?.ToString() ?? "Greška",
                     MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void RefreshProizvodiDataGridHeaders()
+        {
+            if (ProizvodiDataGrid.Columns.Count >= 5)
+            {
+                ProizvodiDataGrid.Columns[1].Header = TryFindResource("ProductName")?.ToString();
+                ProizvodiDataGrid.Columns[2].Header = TryFindResource("Description")?.ToString();
+                ProizvodiDataGrid.Columns[3].Header = TryFindResource("Price")?.ToString();
+                ProizvodiDataGrid.Columns[4].Header = TryFindResource("InStock")?.ToString();
+                ProizvodiDataGrid.Columns[5].Header = TryFindResource("Category")?.ToString();
+            }
+        }
+
+        private void RefreshKategorijeDataGridHeaders()
+        {
+            KategorijeDataGrid.Columns[1].Header = TryFindResource("Category")?.ToString();
         }
 
         private void LoadKuponi()

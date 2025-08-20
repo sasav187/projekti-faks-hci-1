@@ -165,4 +165,9 @@
     <sys:String x:Key="DiscountCoupon">Popust kupona</sys:String>
     <sys:String x:Key="ValidUntilCoupon">Kupon važi do</sys:String>
 
+    <sys:String x:Key="InvalidEmail">Email nije validan.</sys:String>
+    <sys:String x:Key="InvalidPassword">Lozinka mora imati bar 8 karaktera, 
+                                        jedno veliko slovo, jedno malo slovo, 
+                                        jedan broj i jedan specijalni znak.</sys:String>
+
 </ResourceDictionary>

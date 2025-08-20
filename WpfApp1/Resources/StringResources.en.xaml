@@ -165,4 +165,9 @@
     <sys:String x:Key="DiscountCoupon">Coupon discount</sys:String>
     <sys:String x:Key="ValidUntilCoupon">Coupon valid until</sys:String>
 
+    <sys:String x:Key="InvalidEmail">Invalid email.</sys:String>
+    <sys:String x:Key="InvalidPassword">Password must contain atleast 8 characters, 
+                                        one big letter, one small letter, 
+                                        one number and one special symbol.</sys:String>
+
 </ResourceDictionary>
