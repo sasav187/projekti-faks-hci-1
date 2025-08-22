@@ -9,169 +9,176 @@
         Background="{DynamicResource MaterialDesignPaper}"
         Foreground="{DynamicResource MaterialDesignBodyLight}">
 
-    <DockPanel Margin="10">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right">
-            <ComboBox x:Name="ThemeComboBox" Width="150" Margin="10" SelectionChanged="ThemeComboBox_SelectionChanged"
-                      Foreground="{DynamicResource MaterialDesignBody}">
-                <ComboBoxItem Content="{DynamicResource ThemeFirst}" Tag="LightPurpleLime" />
-                <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkPurpleAmber" IsSelected="True"/>
-                <ComboBoxItem Content="{DynamicResource ThemeThird}" Tag="DarkGreenPink"/>
-            </ComboBox>
+        <DockPanel Grid.Row="0" Margin="10">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right">
+                <ComboBox x:Name="ThemeComboBox" Width="150" Margin="10" SelectionChanged="ThemeComboBox_SelectionChanged"
+                          Foreground="{DynamicResource MaterialDesignBody}">
+                    <ComboBoxItem Content="{DynamicResource ThemeFirst}" Tag="LightPurpleLime" />
+                    <ComboBoxItem Content="{DynamicResource ThemeSecond}" Tag="DarkPurpleAmber" IsSelected="True"/>
+                    <ComboBoxItem Content="{DynamicResource ThemeThird}" Tag="DarkGreenPink"/>
+                </ComboBox>
 
-            <ComboBox x:Name="LanguageComboBox" Width="150" SelectionChanged="Language_SelectionChanged" Margin="10">
-                <ComboBoxItem Tag="sr" IsSelected="True">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Flags/sr.png" Width="20" Height="15" Margin="0,0,5,0"/>
-                        <TextBlock Text="Srpski" Foreground="{DynamicResource MaterialDesignBody}"/>
-                    </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem Tag="en">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/Flags/en.png" Width="20" Height="15" Margin="0,0,5,0"/>
-                        <TextBlock Text="English" Foreground="{DynamicResource MaterialDesignBody}"/>
-                    </StackPanel>
-                </ComboBoxItem>
-            </ComboBox>
+                <ComboBox x:Name="LanguageComboBox" Width="150" SelectionChanged="Language_SelectionChanged" Margin="10">
+                    <ComboBoxItem Tag="sr" IsSelected="True">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Flags/sr.png" Width="20" Height="15" Margin="0,0,5,0"/>
+                            <TextBlock Text="Srpski" Foreground="{DynamicResource MaterialDesignBody}"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="en">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/Flags/en.png" Width="20" Height="15" Margin="0,0,5,0"/>
+                            <TextBlock Text="English" Foreground="{DynamicResource MaterialDesignBody}"/>
+                        </StackPanel>
+                    </ComboBoxItem>
+                </ComboBox>
 
-            <Button Content="{DynamicResource Logout}" Width="120" Height="40" Margin="20,0,0,0"
-                    Click="Logout_Click"
-                    Style="{StaticResource MaterialDesignFlatButton}"/>
-        </StackPanel>
+                <Button Content="{DynamicResource Logout}" Width="120" Height="40" Margin="20,0,0,0"
+                        Click="Logout_Click"
+                        Style="{StaticResource MaterialDesignFlatButton}"/>
+            </StackPanel>
 
-        <ToolBar Height="40" DockPanel.Dock="Top">
-            <TextBlock Text="{DynamicResource Welcome}" FontSize="16" Margin="10,0"
-                       Foreground="{DynamicResource MaterialDesignBody}"/>
-            <TextBlock x:Name="UserInfo" FontWeight="Bold" FontSize="16" Margin="10,0"
-                       Foreground="{DynamicResource MaterialDesignBody}"/>
-        </ToolBar>
+            <ToolBar Height="40" DockPanel.Dock="Top">
+                <TextBlock Text="{DynamicResource Welcome}" FontSize="16" Margin="10,0"
+                           Foreground="{DynamicResource MaterialDesignBody}"/>
+                <TextBlock x:Name="UserInfo" FontWeight="Bold" FontSize="16" Margin="10,0"
+                           Foreground="{DynamicResource MaterialDesignBody}"/>
+            </ToolBar>
 
-        <TabControl>
-            <TabItem Header="{DynamicResource OrderTab}">
-                <DockPanel Margin="0,10">
+            <TabControl>
+                <TabItem Header="{DynamicResource OrderTab}">
+                    <DockPanel Margin="0,10">
+                        <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Stretch" Margin="0,0,0,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                    <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Stretch" Margin="0,0,0,10">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                    <TextBox x:Name="SearchTextBox" Width="400" Height="30" VerticalAlignment="Center"
+                                             materialDesign:HintAssist.Hint="{DynamicResource SearchProducts}"
+                                             TextChanged="SearchTextBox_TextChanged"
+                                             Foreground="{DynamicResource MaterialDesignBody}"/>
+                                    <Button Content="{DynamicResource Search}" Width="100" Height="30" Margin="10,0,0,0"
+                                            Click="SearchButton_Click"
+                                            VerticalAlignment="Center"
+                                            Style="{StaticResource MaterialDesignRaisedButton}"/>
+                                </StackPanel>
 
-                            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                <TextBox x:Name="SearchTextBox" Width="400" Height="30" VerticalAlignment="Center"
-                                         materialDesign:HintAssist.Hint="{DynamicResource SearchProducts}"
-                                         TextChanged="SearchTextBox_TextChanged"
-                                         Foreground="{DynamicResource MaterialDesignBody}"/>
-                                <Button Content="{DynamicResource Search}" Width="100" Height="30" Margin="10,0,0,0"
-                                        Click="SearchButton_Click"
-                                        VerticalAlignment="Center"
+                                <Button Content="{DynamicResource FinishOrder}" Grid.Column="2" Width="150" Height="30" 
+                                        HorizontalAlignment="Right" Margin="30,0,0,0"
+                                        Click="ZavrsiNarudzbu_Click"
                                         Style="{StaticResource MaterialDesignRaisedButton}"/>
-                            </StackPanel>
+                            </Grid>
 
-                            <Button Content="{DynamicResource FinishOrder}" Grid.Column="2" Width="150" Height="30" 
-                                    HorizontalAlignment="Right" Margin="30,0,0,0"
-                                    Click="ZavrsiNarudzbu_Click"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"/>
-                        </Grid>
+                            <ComboBox x:Name="KategorijeComboBox"
+                                      Width="300"
+                                      SelectionChanged="KategorijeComboBox_SelectionChanged"
+                                      DisplayMemberPath="Naziv"
+                                      materialDesign:HintAssist.Hint="{DynamicResource CategorySelect}"
+                                      Foreground="{DynamicResource MaterialDesignBody}"/>
+                        </StackPanel>
 
-                        <ComboBox x:Name="KategorijeComboBox"
-                                  Width="300"
-                                  SelectionChanged="KategorijeComboBox_SelectionChanged"
-                                  DisplayMemberPath="Naziv"
-                                  materialDesign:HintAssist.Hint="{DynamicResource CategorySelect}"
-                                  Foreground="{DynamicResource MaterialDesignBody}"/>
-                    </StackPanel>
-
-                    <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" 
-                                  HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,10"
-                                  Height="500" HorizontalAlignment="Center">
-                        <ListBox x:Name="ProizvodiListBox">
-                            <ListBox.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel Orientation="Horizontal" IsItemsHost="True"/>
-                                </ItemsPanelTemplate>
-                            </ListBox.ItemsPanel>
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Border BorderBrush="Gray" BorderThickness="1" 
-                                            CornerRadius="8" Margin="10" Padding="10" 
-                                            Width="220" Height="180">
-                                        <StackPanel>
-                                            <TextBlock Text="{Binding Naziv}" FontWeight="Bold" FontSize="14"
-                                                       Foreground="{DynamicResource MaterialDesignBody}" 
-                                                       TextWrapping="Wrap"/>
-                                            <TextBlock Text="{Binding Opis}" TextWrapping="Wrap" FontSize="12" 
-                                                       Margin="0,5,0,0"
-                                                       Foreground="{DynamicResource MaterialDesignBody}"/>
-                                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                                <TextBlock Text="Cijena: " FontWeight="Bold"
+                        <ScrollViewer DockPanel.Dock="Top" VerticalScrollBarVisibility="Auto" 
+                                      HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,10"
+                                      Height="500" HorizontalAlignment="Center">
+                            <ListBox x:Name="ProizvodiListBox">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal" IsItemsHost="True"/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="Gray" BorderThickness="1" 
+                                                CornerRadius="8" Margin="10" Padding="10" 
+                                                Width="220" Height="180">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Naziv}" FontWeight="Bold" FontSize="14"
+                                                           Foreground="{DynamicResource MaterialDesignBody}" 
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock Text="{Binding Opis}" TextWrapping="Wrap" FontSize="12" 
+                                                           Margin="0,5,0,0"
                                                            Foreground="{DynamicResource MaterialDesignBody}"/>
-                                                <TextBlock Text="{Binding Cijena}" 
-                                                           Foreground="{DynamicResource MaterialDesignBody}"/>
-                                                <TextBlock Text=" KM" Margin="5,0,0,0"
+                                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                                    <TextBlock Text="Cijena: " FontWeight="Bold"
+                                                               Foreground="{DynamicResource MaterialDesignBody}"/>
+                                                    <TextBlock Text="{Binding Cijena}" 
+                                                               Foreground="{DynamicResource MaterialDesignBody}"/>
+                                                    <TextBlock Text=" KM" Margin="5,0,0,0"
+                                                               Foreground="{DynamicResource MaterialDesignBody}"/>
+                                                </StackPanel>
+                                                <TextBlock Text="{Binding NaStanju, StringFormat='Na stanju: {0}'}" 
                                                            Foreground="{DynamicResource MaterialDesignBody}"/>
                                             </StackPanel>
-                                            <TextBlock Text="{Binding NaStanju, StringFormat='Na stanju: {0}'}" 
-                                                       Foreground="{DynamicResource MaterialDesignBody}"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </ScrollViewer>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
 
-                    <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical" 
-                                HorizontalAlignment="Center" Margin="0,10,0,0">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
-                            <TextBlock Text="{DynamicResource Quantity}" VerticalAlignment="Center" Margin="0,0,10,0" 
-                                       Foreground="{DynamicResource MaterialDesignBody}" 
-                                       FontWeight="Bold" FontSize="14"/>
-                            <TextBox x:Name="KolicinaTextBox" Width="100" Height="30" 
-                                     VerticalContentAlignment="Center"
-                                     materialDesign:HintAssist.Hint="{DynamicResource ProductQuantity}"
+                        <StackPanel DockPanel.Dock="Bottom" Orientation="Vertical" 
+                                    HorizontalAlignment="Center" Margin="0,10,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                <TextBlock Text="{DynamicResource Quantity}" VerticalAlignment="Center" Margin="0,0,10,0" 
+                                           Foreground="{DynamicResource MaterialDesignBody}" 
+                                           FontWeight="Bold" FontSize="14"/>
+                                <TextBox x:Name="KolicinaTextBox" Width="100" Height="30" 
+                                         VerticalContentAlignment="Center"
+                                         materialDesign:HintAssist.Hint="{DynamicResource ProductQuantity}"
+                                         Foreground="{DynamicResource MaterialDesignBody}"/>
+                                <Button Content="{DynamicResource Order}" Width="150" Height="40" Margin="30,0,0,0"
+                                        Click="NaruciButton_Click"
+                                        Style="{StaticResource MaterialDesignRaisedButton}"/>
+                            </StackPanel>
+                            <TextBox x:Name="KuponTextBox" Width="250" Height="30" VerticalContentAlignment="Center"
+                                     materialDesign:HintAssist.Hint="{DynamicResource CouponCode}"
                                      Foreground="{DynamicResource MaterialDesignBody}"/>
-                            <Button Content="{DynamicResource Order}" Width="150" Height="40" Margin="30,0,0,0"
-                                    Click="NaruciButton_Click"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"/>
                         </StackPanel>
-                        <TextBox x:Name="KuponTextBox" Width="250" Height="30" VerticalContentAlignment="Center"
-                                 materialDesign:HintAssist.Hint="{DynamicResource CouponCode}"
-                                 Foreground="{DynamicResource MaterialDesignBody}"/>
-                    </StackPanel>
+                    </DockPanel>
+                </TabItem>
 
-                    <TextBlock x:Name="StatusTextBlock" FontWeight="Bold" FontSize="14" Foreground="Red" Padding="10"/>
-                </DockPanel>
-            </TabItem>
+                <TabItem Header="{DynamicResource OrdersTab}">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="{DynamicResource OrdersTitle}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
+                                       Foreground="{DynamicResource MaterialDesignBody}"/>
+                            <DataGrid x:Name="NarudzbeDataGrid"
+                                      AutoGenerateColumns="False"
+                                      Height="500"
+                                      CanUserAddRows="False"
+                                      IsReadOnly="True"
+                                      SelectionChanged="NarudzbeDataGrid_SelectionChanged"
+                                      Foreground="{DynamicResource MaterialDesignBody}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="{DynamicResource OrderId}" 
+                                                        Binding="{Binding Id}" Width="Auto"/>
+                                    <DataGridTextColumn Header="{DynamicResource AddressId}" 
+                                                        Binding="{Binding AdresaId}" Width="Auto"/>
+                                    <DataGridTextColumn Header="{DynamicResource OrderDate}" 
+                                                        Binding="{Binding DatumNarudzbe}" Width="*"/>
+                                    <DataGridTextColumn Header="{DynamicResource Total}" 
+                                                        Binding="{Binding UkupnaCijena}" Width="*"/>
+                                    <DataGridTextColumn Header="{DynamicResource Status}" 
+                                                        Binding="{Binding Status}" Width="*"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
 
-            <TabItem Header="{DynamicResource OrdersTab}">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Margin="10">
-                        <TextBlock Text="{DynamicResource OrdersTitle}" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"
-                                   Foreground="{DynamicResource MaterialDesignBody}"/>
-                        <DataGrid x:Name="NarudzbeDataGrid"
-                                  AutoGenerateColumns="False"
-                                  Height="500"
-                                  CanUserAddRows="False"
-                                  IsReadOnly="True"
-                                  SelectionChanged="NarudzbeDataGrid_SelectionChanged"
-                                  Foreground="{DynamicResource MaterialDesignBody}">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="{DynamicResource OrderId}" 
-                                                    Binding="{Binding Id}" Width="Auto"/>
-                                <DataGridTextColumn Header="{DynamicResource AddressId}" 
-                                                    Binding="{Binding AdresaId}" Width="Auto"/>
-                                <DataGridTextColumn Header="{DynamicResource OrderDate}" 
-                                                    Binding="{Binding DatumNarudzbe}" Width="*"/>
-                                <DataGridTextColumn Header="{DynamicResource Total}" 
-                                                    Binding="{Binding UkupnaCijena}" Width="*"/>
-                                <DataGridTextColumn Header="{DynamicResource Status}" 
-                                                    Binding="{Binding Status}" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
-                </ScrollViewer>
-            </TabItem>
-        </TabControl>
-    </DockPanel>
+        <StatusBar Grid.Row="1" Background="{DynamicResource MaterialDesignCardBackground}">
+            <TextBlock x:Name="StatusTextBlock" FontWeight="Bold" FontSize="14" Foreground="Red" Padding="10"/>
+        </StatusBar>
+    </Grid>
 </Window>
