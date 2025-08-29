@@ -215,7 +215,7 @@
                 </ScrollViewer>
             </TabItem>
 
-            <TabItem Header="{DynamicResource AddCouponAdmin}">
+            <TabItem Header="{DynamicResource CouponsTitle}">
                 <StackPanel Margin="20">
                     <TextBox x:Name="KuponKodTextBox" Width="300" Margin="0,5"
                  materialDesign:HintAssist.Hint="{DynamicResource AddCouponCode}"
