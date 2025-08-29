@@ -138,10 +138,11 @@
                                 <Button Content="{DynamicResource Order}" Width="150" Height="40" Margin="30,0,0,0"
                                         Click="NaruciButton_Click"
                                         Style="{StaticResource MaterialDesignRaisedButton}"/>
+                                <TextBox x:Name="KuponTextBox" Width="250" VerticalAlignment="Center" Margin="30,0,0,0"
+                                         materialDesign:HintAssist.Hint="{DynamicResource CouponCode}"
+                                         Foreground="{DynamicResource MaterialDesignBody}"/>
                             </StackPanel>
-                            <TextBox x:Name="KuponTextBox" Width="250" Height="30" VerticalContentAlignment="Center"
-                                     materialDesign:HintAssist.Hint="{DynamicResource CouponCode}"
-                                     Foreground="{DynamicResource MaterialDesignBody}"/>
+                     
                         </StackPanel>
                     </DockPanel>
                 </TabItem>
