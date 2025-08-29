@@ -3,7 +3,11 @@
 ##  Sadržaj
 - [O aplikaciji](#o-aplikaciji)
 - [Prijava na sistem](#prijava)
-- [Registracija na sistem](#registracija)
+  - [Registracija na sistem](#registracija)
+- [Prozor za običnog korisnika](#prozor-za-obicnog-korisnika)
+  - [Odabir teme i jezika](#odabir-teme-i-jezika) 
+  - [Naručivanje proizvoda](#narucivanje-proizvoda)
+  - [Pregled prethodnih narudžbi](#istorija-narudzbi) 
 - [Funkcionalnosti](#funkcionalnosti)
 - [Tehnologije](#tehnologije)
 - [Sistemski zahtevi](#sistemski-zahtevi)
@@ -35,7 +39,7 @@ Ukoliko podaci nisu ispravni izbacuje se greška.
     <img src="screenshots/login-error.png" alt="Prozor za gresku pri prijavi" />
 </p>
 
-## <span id="registracija"> Registracija na sistem
+### <span id="registracija"> Registracija na sistem
 
 Ukoliko korisnik nema nalog, može da se registruje.
 <p align="center">
@@ -50,12 +54,14 @@ Pri regisraciji korisnik mora da unese validne podatke, pravilan format e-maila,
     <img src="screenshots/register-error-password-match.png" alt="Prozor za gresku u lozinkama u registraciji" />
 </p>
 
-## Prozor za običnog korisnika (kupca)
+## <span id="prozor-za-obicnog-korisnika"> Prozor za običnog korisnika (kupca)
 
 Korisnik kada se prijavi na sistem, prikazuje mu se glavni korisnički prozor na kojem može da napravi narudžbu.
 <p align="center">
     <img src="screenshots/user-order.png" alt="Prozor za kupca" /><br>
 </p>
+
+### <span id="odabir-teme-i-jezika"> Odabir teme i jezika
 
 Korisnik može da izabere u gornjem desnom ćošku željenu temu i jezik, čiji se izbor čuva za datog korisnika sljedeći put kada se prijavi na sistem.
 <p align="center">
@@ -74,7 +80,7 @@ Na sljedećoj slici prikazan je korisnički prozor na engleskom.
     <img src="screenshots/user-english.png" alt="Prozor na engleskom" />
 </p>
 
-### Naručivanje proizvoda 
+### <span id="narucivanje-proizvoda"> Naručivanje proizvoda 
 
 Korisnik može da filtrira željene proizvode po odabiru kategorije, da ukuca ime proizvoda ili njegov opis.
 
@@ -92,6 +98,55 @@ Filtriranje po kategoriji:
 Filtriranje po kucanju ključnih riječi:
 <p align="center">
     <img src="screenshots/user-order-by-search.png" alt="Pretraga po kljucnim rijecima" />
+</p>
+
+Kada korisnik odabere neki proizvod koji želi da naruči treba da upiše količinu proizvoda koju želi da naruči u odgovarajućem tekst boksu.
+<p align="center">
+    <img src="screenshots/user-order-button.png" alt="Naruci" />
+</p>
+
+Kada izabere količinu proizvod se dodaje u korpu i ispisuje se odgovarajuća poruka na status baru.
+<p align="center">
+    <img src="screenshots/status-bar-order.png" alt="Proizvod dodat u korpu" />
+</p>
+
+Ukoliko nije dostupna količina proizvoda ispisaće se odgovarajuća poruka na status baru.
+<p align="center">
+    <img src="screenshots/status-bar-error.png" alt="Nedovoljna kolicina proizvoda na stanju" />
+</p>
+
+Prije nego što završi narudžbu korisnik može da unese odgovarajući kupon kod koji bi mu dao određeni popust.
+<p align="center">
+    <img src="screenshots/user-order-coupon.png" alt="Unesi kupon" />
+</p>
+
+Korisnik kada odabere sve proizvode koje želi da naruči, da završi narudžbu bira odgovarajuće dugme za završetak narudžbe, nakon koje se otvara prozor za potvrdu narudžbe na kojem se nalaze detalji narudžbe.
+<p align="center">
+    <img src="screenshots/user-order-finish.png" alt="Zavrsi narudzbu" /><br>
+    <img src="screenshots/confirm-order.png" alt="Potvrdi narudzbu" />
+</p>
+
+Kada korisnik potvrdi narudžbu otvara se prozor za unos adrese narudžbe, nakon unosa otvara se prozor za odabir načina plaćanja.
+<p align="center">
+    <img src="screenshots/order-address.png" alt="Detalji adrese narudzbe" /><br>
+    <img src="screenshots/payment.png" alt="Nacin placanja" />
+</p>
+
+Nakon uspješnog plaćanja dobija se odgovarajuća poruka sistema.
+<p align="center">
+    <img src="screenshots/payment-successful.png" alt="Placanje uspjesno" />
+</p>
+
+### <span id="istorija-narudzbi"> Pregled prethodnih narudžbi
+
+Korisnik ima uvid u svoje prethodne narudžbe.
+<p align="center">
+    <img src="screenshots/order-history.png" alt="Istorija narudzbi" />
+</p>
+
+Korisnik može da odabere neku narudžbu, nakon čega se otvara prozor koji prikazuje detalje te narudžbe.
+<p align="center">
+    <img src="screenshots/order-details.png" alt="Detalji narudzbe" />
 </p>
 
 ### 👤 Funkcionalnosti za kupce
@@ -365,7 +420,7 @@ Za dodatnu podršku ili prijavu grešaka:
 - Otvorite issue na GitHub repozitorijumu
 - Kontaktirajte developere putem email-a
 
-## 📄 Licenca
+## <span id="licenca"> Licenca
 
 Ovaj projekat je licenciran pod MIT licencom. Pogledajte [LICENSE](LICENSE) fajl za detalje.
 
