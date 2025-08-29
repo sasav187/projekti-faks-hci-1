@@ -7,7 +7,12 @@
 - [Prozor za običnog korisnika](#prozor-za-obicnog-korisnika)
   - [Odabir teme i jezika](#odabir-teme-i-jezika) 
   - [Naručivanje proizvoda](#narucivanje-proizvoda)
-  - [Pregled prethodnih narudžbi](#istorija-narudzbi) 
+  - [Pregled prethodnih narudžbi](#istorija-narudzbi)
+- [Prozor za admina](#prozor-za-admina)
+  - [Proizvodi i kategorije](#proizvodi-i-kategorije)
+  - [Pregled korisničkih naloga](#korisnicki-nalozi)
+  - [Pregled prethodnih narudžbi](#prethodne-narudzbe)
+  - [Pregled kupona](#kuponi)
 - [Funkcionalnosti](#funkcionalnosti)
 - [Tehnologije](#tehnologije)
 - [Sistemski zahtevi](#sistemski-zahtevi)
@@ -147,6 +152,30 @@ Korisnik ima uvid u svoje prethodne narudžbe.
 Korisnik može da odabere neku narudžbu, nakon čega se otvara prozor koji prikazuje detalje te narudžbe.
 <p align="center">
     <img src="screenshots/order-details.png" alt="Detalji narudzbe" />
+</p>
+
+## <span id="prozor-za-admina"> Prozor za admina
+
+Admin meni nudi niz opcija od kojih je podrazumijevana dodavanje, uređivanje i brisanje proizvoda i kategorija. 
+
+### <span id="proizvodi-i-kategorije"> Proizvodi i kategorije
+<p align="center">
+    <img src="screenshots/admin-products.png" alt="Admin glavni" />
+</p>
+
+### <span id="korisnicki-nalozi"> Pregled korisničkih naloga
+<p align="center">
+    <img src="screenshots/admin-users.png" alt="Admin glavni" />
+</p>
+
+### <span id="prethodne-narudzbe"> Pregled prethodnih narudžbi
+<p align="center">
+    <img src="screenshots/admin-orders.png" alt="Admin glavni" />
+</p>
+
+### <span id="kuponi"> Pregled kupona
+<p align="center">
+    <img src="screenshots/admin-coupons.png" alt="Admin glavni" />
 </p>
 
 ### 👤 Funkcionalnosti za kupce
