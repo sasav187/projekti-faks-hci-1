@@ -1,7 +1,9 @@
-# 🛒 ProdavnicaApp - WPF Aplikacija za Upravljanje Prodavnicom
+#  ProdavnicaApp - WPF Aplikacija za Upravljanje Prodavnicom
 
-## 📋 Sadržaj
+##  Sadržaj
 - [O aplikaciji](#o-aplikaciji)
+- [Prijava na sistem](#prijava)
+- [Registracija na sistem](#registracija)
 - [Funkcionalnosti](#funkcionalnosti)
 - [Tehnologije](#tehnologije)
 - [Sistemski zahtevi](#sistemski-zahtevi)
@@ -11,18 +13,86 @@
 - [Struktura projekta](#struktura-projekta)
 - [Licenca](#licenca)
 
-## 🎯 O aplikaciji
+## <span id="o-aplikaciji"> O aplikaciji
 
-ProdavnicaApp je desktop aplikacija napisana u WPF (Windows Presentation Foundation) koja omogućava upravljanje online prodavnicom. Aplikacija podržava dve uloge korisnika: **kupac** i **administrator**, sa različitim funkcionalnostima za svaku ulogu.
+ProdavnicaApp je desktop aplikacija napisana u WPF (Windows Presentation Foundation) koja omogućava upravljanje online prodavnicom. Aplikacija podržava dve uloge korisnika: **kupac** i **administrator**, sa različitim funkcionalnostima za svaku ulogu. Sastoji se od 3 glavna prozora: prozor za prijavu, prozor za običnog korisnika (kupca) i prozor za admina.
 
-### 🌟 Ključne karakteristike
+### Ključne karakteristike
 - **Dvojezičnost**: Podržava srpski i engleski jezik
 - **Material Design**: Moderan i intuitivan korisnički interfejs
-- **Sigurnost**: Enkripcija lozinki pomoću BCrypt
 - **Baza podataka**: MySQL integracija sa Entity Framework
 - **Responsive dizajn**: Prilagođava se različitim veličinama prozora
 
-## ✨ Funkcionalnosti
+## <span id="prijava"> Prijava na sistem
+
+Korisnik se prijavljuje na sistem tako što unosi svoje podatke za prijavu.
+<p align="center">
+    <img src="screenshots/login.png" alt="Prozor za prijavu" /><br>
+</p>
+
+Ukoliko podaci nisu ispravni izbacuje se greška.
+<p align="center">
+    <img src="screenshots/login-error.png" alt="Prozor za gresku pri prijavi" />
+</p>
+
+## <span id="registracija"> Registracija na sistem
+
+Ukoliko korisnik nema nalog, može da se registruje.
+<p align="center">
+    <img src="screenshots/register.png" alt="Prozor za registraciju" />
+</p>
+
+Pri regisraciji korisnik mora da unese validne podatke, pravilan format e-maila, lozinke, kao i ponovljena lozinka.
+
+<p align="center">
+    <img src="screenshots/register-error-email.png" alt="Prozor za gresku u emailu u registraciji" /> <br>
+    <img src="screenshots/register-error-password.png" alt="Prozor za gresku u lozinci u registraciji" /> <br>
+    <img src="screenshots/register-error-password-match.png" alt="Prozor za gresku u lozinkama u registraciji" />
+</p>
+
+## Prozor za običnog korisnika (kupca)
+
+Korisnik kada se prijavi na sistem, prikazuje mu se glavni korisnički prozor na kojem može da napravi narudžbu.
+<p align="center">
+    <img src="screenshots/user-order.png" alt="Prozor za kupca" /><br>
+</p>
+
+Korisnik može da izabere u gornjem desnom ćošku željenu temu i jezik, čiji se izbor čuva za datog korisnika sljedeći put kada se prijavi na sistem.
+<p align="center">
+    <img src="screenshots/theme.png" alt="Prozor za odabir teme" />
+    <img src="screenshots/language.png" alt="Prozor za odabir jezika" />
+</p>
+
+Na sljedećim slikama prikazan je korisnički prozor u svijetloj temi i zelenoj.
+<p align="center">
+    <img src="screenshots/user-light.png" alt="Svijetla tema" />
+    <img src="screenshots/user-green.png" alt="Zelena tema" />
+</p>
+
+Na sljedećoj slici prikazan je korisnički prozor na engleskom.
+<p align="center">
+    <img src="screenshots/user-english.png" alt="Prozor na engleskom" />
+</p>
+
+### Naručivanje proizvoda 
+
+Korisnik može da filtrira željene proizvode po odabiru kategorije, da ukuca ime proizvoda ili njegov opis.
+
+<p align="center">
+    <img src="screenshots/user-order-category.png" alt="Izaberi kategoriju" /><br>
+    <img src="screenshots/user-order-category-list.png" alt="Odabir kategorije" /><br>
+    <img src="screenshots/user-order-search.png" alt="Trazi proizvod" />
+</p>
+
+Filtriranje po kategoriji:
+<p align="center">
+    <img src="screenshots/user-order-by-category.png" alt="Pretraga po kategoriji" />
+</p>
+
+Filtriranje po kucanju ključnih riječi:
+<p align="center">
+    <img src="screenshots/user-order-by-search.png" alt="Pretraga po kljucnim rijecima" />
+</p>
 
 ### 👤 Funkcionalnosti za kupce
 - **Registracija i prijava**: Kreiranje novog naloga i prijava u sistem
